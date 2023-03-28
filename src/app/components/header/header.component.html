@@ -1,0 +1,19 @@
+<header>
+  <div class="headerIconContainer">
+    <img class="headerImg" src="/assets/logos/logo 1.png" />
+    <p class="headerIconText">კლინიკა</p>
+  </div>
+  <div class="navigationContainer">
+    <div class="navItem" *ngFor="let navItem of navItems">
+      <span>{{ navItem }}</span>
+    </div>
+  </div>
+  <div class="authContainer">
+    <div class="authorization active"><span>ავტორიზაცია</span></div>
+    <div class="slashFigure"><span>/</span></div>
+    <div class="registration"><span>რეგისტრაცია</span></div>
+  </div>
+  <div class="languageContainer">
+    <span>ENG</span>
+  </div>
+</header>

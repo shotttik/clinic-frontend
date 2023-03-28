@@ -1,0 +1,103 @@
+header {
+  margin-top: 17px;
+  margin-left: 150px;
+  display: grid;
+  grid-template-columns: 0fr 0fr 0fr 0fr;
+}
+.headerIconText {
+  position: absolute;
+  top: 0px;
+  left: 68px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 0.07em;
+
+  color: #ff2c52;
+  -webkit-text-stroke: 1px black;
+}
+
+.navItem span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  color: #053354;
+  margin-right: 35px;
+}
+.navItem.active {
+  font-family: "FiraGO-SemiBold";
+}
+
+.authContainer {
+  margin-top: 14px;
+  width: 280px;
+  height: 45px;
+
+  background: #f0faff;
+  border-radius: 25px;
+}
+
+.authContainer {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: inline-flex;
+}
+
+.authorization,
+.slashFigure,
+.registration {
+  margin-top: 11px;
+}
+.authorization {
+  margin-left: 25px;
+}
+.slashFigure {
+  margin: 11px 2px 0 2px;
+}
+
+.authContainer .active {
+  color: #18a4e1;
+}
+
+.languageContainer {
+  width: 80px;
+  height: 45px;
+
+  background: #f0faff;
+  border-radius: 25px;
+}
+
+.headerIconContainer {
+  position: relative;
+}
+
+.navigationContainer {
+  display: inline-flex;
+  margin-left: 228px;
+  margin-top: 24px;
+}
+
+.languageContainer {
+  margin-top: 14px;
+  margin-left: 29px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.languageContainer span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #053354;
+}

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "FiraGO-Regular";
+  src: url("assets/fonts/FiraGO-Regular.otf");
+}
+@font-face {
+  font-family: "FiraGO-Medium";
+  src: url("assets/fonts/FiraGO-Medium.otf");
+}
+
+@font-face {
+  font-family: "FiraGO-SemiBold";
+  src: url("assets/fonts/FiraGO-SemiBold.otf");
+}

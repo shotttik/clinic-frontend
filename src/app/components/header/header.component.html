@@ -4,14 +4,20 @@
     <p class="headerIconText">კლინიკა</p>
   </div>
   <div class="navigationContainer">
-    <div class="navItem" *ngFor="let navItem of navItems">
+    <div
+      class="navItem"
+      *ngFor="let navItem of navItems"
+      [ngClass]="{ active: navItem == 'ექიმები' }"
+    >
       <span>{{ navItem }}</span>
     </div>
+    <div class="navLine"></div>
+    <div class="navLineActive"></div>
   </div>
   <div class="authContainer">
-    <div class="authorization active"><span>ავტორიზაცია</span></div>
+    <div class="authorization"><span>ავტორიზაცია</span></div>
     <div class="slashFigure"><span>/</span></div>
-    <div class="registration"><span>რეგისტრაცია</span></div>
+    <div class="registration active"><span>რეგისტრაცია</span></div>
   </div>
   <div class="languageContainer">
     <span>ENG</span>

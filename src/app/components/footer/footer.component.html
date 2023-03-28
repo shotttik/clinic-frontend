@@ -1,3 +1,33 @@
 <footer>
-  <p>footer works!</p>
+  <div class="footerIconContainer">
+    <img class="footerImg" src="/assets/logos/logo 2.png" />
+    <p class="footerIconText">კლინიკა</p>
+  </div>
+  <div class="footerBarContainer">
+    <div class="infromationContainer">
+      <span>ინფორმაცია</span>
+      <div class="infoMenu">
+        <span *ngFor="let item of infoMenu">{{ item }}</span>
+      </div>
+    </div>
+    <div class="forPatientsContainer">
+      <span>პაციენტებისთვის</span>
+      <div class="forPatientsMenu">
+        <span *ngFor="let item of forPatientsMenu">{{ item }}</span>
+      </div>
+    </div>
+    <div class="contactContainer">
+      <span>კონტაქტი</span>
+      <div class="contactMenu">
+        <span *ngFor="let item of contactMenu">{{ item }}</span>
+      </div>
+    </div>
+    <div class="followContainer">
+      <span>გამოგვყევით</span>
+      <div class="followMenu">
+        <span *ngFor="let item of followMenu">{{ item }}</span>
+      </div>
+    </div>
+    <div class="footerBarLine"></div>
+  </div>
 </footer>

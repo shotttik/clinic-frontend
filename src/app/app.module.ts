@@ -9,6 +9,7 @@ import { SvgIconComponent } from './svg-icon/svg-icon.component';
 import { SearchComponent } from './components/search/search.component';
 import { InputComponent } from './elements/input/input.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     InputComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

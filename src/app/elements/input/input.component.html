@@ -1,5 +1,11 @@
 <div class="searchInput">
   <label *ngIf="for" [for]="for">{{ label }} </label>
-  <input type="text" [id]="for" [placeholder]="placeholder" />
+  <input
+    type="text"
+    [id]="for"
+    [placeholder]="placeholder"
+    #ival
+    (change)="valueChanged(ival.value)"
+  />
   <app-svg-icon *ngIf="svgName" [name]="svgName"></app-svg-icon>
 </div>

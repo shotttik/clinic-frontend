@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -10,8 +10,12 @@ export class InputComponent implements OnInit {
   @Input() svgName = '';
   @Input() placeholder = '';
   @Input() label = '';
-
+  @Output() inputValueEvent = new EventEmitter<string>();
   constructor() {}
 
   ngOnInit(): void {}
+
+  valueChanged(v: string) {
+    this.inputValueEvent.emit(v);
+  }
 }

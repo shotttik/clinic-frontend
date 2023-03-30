@@ -8,6 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
   phoneNumber = '032 2 100 100';
   address = 'იაკობ ნიკოლაძე №10';
+  searchByName = '';
+  searchBySpec = '';
   constructor() {}
   ngOnInit(): void {}
+  setMedSearchByName(value: string) {
+    this.searchByName = value;
+  }
+  setMedSearchBySpec(value: string) {
+    this.searchBySpec = value;
+  }
 }

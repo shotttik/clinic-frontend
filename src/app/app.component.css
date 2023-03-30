@@ -1,0 +1,5 @@
+:host ::ng-deep .centerIcon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}

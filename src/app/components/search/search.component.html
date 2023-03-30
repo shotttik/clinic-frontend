@@ -1,6 +1,27 @@
 <div class="searchContainer">
+  <div class="callContact">
+    <div class="callIconCricle centerIcon">
+      <app-svg-icon name="call-svgrepo-com"></app-svg-icon>
+    </div>
+    <span>{{ phoneNumber }}</span>
+  </div>
+
+  <div class="addressContact">
+    <div class="addressIconCricle centerIcon">
+      <app-svg-icon name="location-svgrepo-com"></app-svg-icon>
+    </div>
+    <span>{{ address }}</span>
+  </div>
+
   <app-input
-    svgName="mail-right-arrow"
+    class="searchByName"
     placeholder="მოძებნე ექიმი სახელით"
   ></app-input>
+  <app-input
+    class="searchBySpec"
+    placeholder="მოძებნე ექიმი სპეციალობით"
+  ></app-input>
+  <div class="SearchIconCircle centerIcon">
+    <app-svg-icon name="ri_search-line"></app-svg-icon>
+  </div>
 </div>

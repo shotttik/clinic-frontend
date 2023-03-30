@@ -1,4 +1,5 @@
 <div class="searchInput">
-  <input type="text" [placeholder]="placeholder" />
+  <label *ngIf="for" [for]="for">{{ label }} </label>
+  <input type="text" [id]="for" [placeholder]="placeholder" />
   <app-svg-icon *ngIf="svgName" [name]="svgName"></app-svg-icon>
 </div>

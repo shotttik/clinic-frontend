@@ -3,3 +3,56 @@
   margin-top: 27px;
   background: #ecf2f8;
 }
+.searchContainer > * {
+  margin-top: 35px;
+}
+.callContact {
+  margin-left: 150px;
+}
+.callContact,
+.addressContact {
+  display: inline-block;
+}
+.callContact span,
+.addressContact span {
+  margin-left: 20px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.07em;
+
+  color: #053354;
+}
+
+.callIconCricle,
+.addressIconCricle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+.addressContact {
+  margin-left: 40px;
+}
+
+.SearchIconCircle {
+  width: 50px;
+  height: 50px;
+  background: #053354;
+  border-radius: 50%;
+}
+
+.searchByName {
+  margin-left: 97px;
+}
+.searchBySpec {
+  margin-left: 20px;
+}
+
+.SearchIconCircle {
+  margin-left: 20px;
+}

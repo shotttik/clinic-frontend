@@ -10,6 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { InputComponent } from './elements/input/input.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './pages/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     SvgIconComponent,
     SearchComponent,
     InputComponent,
+    RegistrationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

@@ -1,0 +1,39 @@
+<div class="regContainer">
+  <div class="regTitle"><span>რეგისტრაცია</span></div>
+  <div class="regInfoFirst">
+    <app-input
+      class="name"
+      placeholder="( მინიმუმ 5 სიმბოლო )"
+      label="სახელი"
+      for="name"
+    ></app-input>
+    <app-input
+      class="email"
+      svgName="mail-right-arrow"
+      label="Email"
+      for="email"
+    ></app-input>
+    <app-input
+      class="pid"
+      placeholder="00000000000"
+      label="პირადი ნომერი"
+      for="pid"
+    ></app-input>
+  </div>
+  <div class="regInfoSecond">
+    <app-input class="lastName" label="გვარი" for="lastName"></app-input>
+    <app-input
+      class="activateCode"
+      label="აქტივაციის კოდი"
+      for="activateCode"
+      infoLabel="ვადა 30 წთ"
+      error="*ბმულის მოქმედების ვადა ამოიწურა"
+    ></app-input>
+    <app-input
+      class="password"
+      placeholder="( მინიმუმ 8 სიმბოლო : @ 7 , )"
+      label="პაროლი"
+      for="password"
+    ></app-input>
+  </div>
+</div>

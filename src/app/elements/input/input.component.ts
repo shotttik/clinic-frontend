@@ -10,6 +10,8 @@ export class InputComponent implements OnInit {
   @Input() svgName = '';
   @Input() placeholder = '';
   @Input() label = '';
+  @Input() infoLabel = '';
+  @Input() error = '';
   @Output() inputValueEvent = new EventEmitter<string>();
   constructor() {}
 

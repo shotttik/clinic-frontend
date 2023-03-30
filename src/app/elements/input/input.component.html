@@ -1,5 +1,6 @@
 <div class="searchInput">
-  <label *ngIf="for" [for]="for">{{ label }} </label>
+  <label class="mainLabel" *ngIf="for" [for]="for">{{ label }} </label>
+  <p class="infoLabel" *ngIf="infoLabel">{{ infoLabel }}</p>
   <input
     type="text"
     [id]="for"
@@ -7,5 +8,6 @@
     #ival
     (change)="valueChanged(ival.value)"
   />
+  <p class="error" *ngIf="error">{{ error }}</p>
   <app-svg-icon *ngIf="svgName" [name]="svgName"></app-svg-icon>
 </div>

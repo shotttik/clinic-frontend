@@ -15,11 +15,17 @@
     <div class="navLineActive"></div>
   </div>
   <div class="authContainer">
-    <div class="authorization" (click)="openDialog()">
+    <div
+      class="authorization"
+      [class.active]="authDialogOpened"
+      (click)="openDialog()"
+    >
       <span>ავტორიზაცია</span>
     </div>
     <div class="slashFigure"><span>/</span></div>
-    <div class="registration active"><span>რეგისტრაცია</span></div>
+    <div class="registration" [class.active]="!authDialogOpened">
+      <span>რეგისტრაცია</span>
+    </div>
   </div>
   <div class="languageContainer">
     <span>ENG</span>

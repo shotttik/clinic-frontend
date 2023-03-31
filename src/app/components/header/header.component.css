@@ -54,9 +54,11 @@ header {
 .authorization,
 .slashFigure,
 .registration {
+  cursor: pointer;
   margin-top: 11px;
 }
 .authorization {
+  cursor: pointer;
   margin-left: 25px;
 }
 .slashFigure {

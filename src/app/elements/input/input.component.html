@@ -2,7 +2,7 @@
   <label class="mainLabel" *ngIf="for" [for]="for">{{ label }} </label>
   <p class="infoLabel" *ngIf="infoLabel">{{ infoLabel }}</p>
   <input
-    type="text"
+    [type]="type"
     [id]="for"
     [placeholder]="placeholder"
     #ival

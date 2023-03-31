@@ -1,6 +1,6 @@
 .searchInput {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
 }
 .searchInput input {
   width: 440px;

@@ -1,0 +1,33 @@
+.authContainer {
+  margin: 66px 111px 89px 144px;
+}
+.authTitle {
+  margin-bottom: 44px;
+}
+.authTitle span {
+  margin-bottom: 44px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+
+  color: #18a4e1;
+}
+
+.authEmail {
+  display: block;
+  padding-bottom: 20px;
+}
+.restorePassword {
+  margin: 5px 0 42px 334px;
+}
+.restorePassword span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #053354;
+}

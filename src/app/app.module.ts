@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ButtonComponent } from './elements/button/button.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,16 @@ import { ButtonComponent } from './elements/button/button.component';
     InputComponent,
     RegistrationComponent,
     ButtonComponent,
+    AuthorizationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,84 @@
+.medicsOfferContainer {
+  position: relative;
+  height: 600px;
+  width: 100%;
+  background-image: url("/assets/backgrounds/main.png");
+}
+
+.medicsContainerHover {
+  position: absolute;
+  z-index: 3;
+  height: 600px;
+  width: 100%;
+
+  background: rgba(5, 51, 84, 0.15);
+}
+
+.medicsContainerHalfHover {
+  position: absolute;
+  z-index: 4;
+  width: 1087px;
+  height: 600px;
+
+  background: rgba(5, 51, 84, 0.25);
+  backdrop-filter: blur(2px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 0px 50px 50px 0px;
+}
+.offerTitle {
+  padding-top: 184px;
+  padding-left: 150px;
+}
+.offerTitle span {
+  width: 676px;
+  position: absolute;
+  z-index: 5;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 58px;
+
+  color: #ffffff;
+}
+
+.offerClinicAddress {
+  margin-left: 150px;
+  margin-top: 166px;
+  position: absolute;
+  z-index: 5;
+  width: 370px;
+  height: 65px;
+
+  background: #ffffff;
+  border-radius: 50px;
+}
+
+.offerClinicAddress app-svg-icon {
+  display: inline-block;
+
+  margin-top: 18px;
+  margin-left: 30px;
+}
+
+.offerClinicAddress app-svg-icon ::ng-deep svg {
+  width: 30px;
+  height: 30px;
+}
+
+.offerClinicAddressTitle {
+  margin-right: 65px;
+  margin-top: 20px;
+  float: right;
+}
+
+.offerClinicAddressTitle span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #053354;
+}

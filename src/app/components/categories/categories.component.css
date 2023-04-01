@@ -1,0 +1,88 @@
+.categoriesContainer {
+  width: 350px;
+  height: 800px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 50px rgba(5, 51, 84, 0.05);
+  border-radius: 10px;
+}
+.categoriesTitle {
+  padding-top: 30px;
+  margin-left: 105px;
+}
+.categoriesTitle span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #053354;
+}
+
+.categoriesTitleLine {
+  width: 250px;
+  margin-top: 15px;
+  margin-left: 40px;
+  border: 1px solid #ecf2f8;
+}
+
+.categoryItems {
+  margin-top: 17px;
+}
+
+.numberInCategory {
+  margin-left: 40px;
+
+  display: inline-block;
+  width: 49px;
+}
+.categoryItemTitle {
+  display: inline-block;
+  width: 181px;
+  margin-left: 15px;
+}
+
+.categoryItems span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+.categoryItemTitle span {
+  color: #053354;
+}
+.numberInCategory span {
+  display: block;
+  margin-top: 10px;
+  color: rgba(5, 51, 84, 0.3);
+}
+
+.categoryItem {
+  height: 40px;
+  cursor: pointer;
+}
+
+.categoryItem.active {
+  width: 350px;
+  height: 40px;
+
+  background: rgba(236, 242, 248, 0.5);
+}
+.categoryItem app-svg-icon {
+  display: none;
+}
+.categoryItem.active .numberInCategory span {
+  color: #18a4e1;
+}
+
+.categoryItem.active app-svg-icon {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.categoryItem:hover {
+  background: rgba(236, 242, 248, 0.61);
+}

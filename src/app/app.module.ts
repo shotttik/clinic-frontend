@@ -15,6 +15,9 @@ import { ButtonComponent } from './elements/button/button.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MedicsComponent } from './pages/medics/medics.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegistrationComponent,
     ButtonComponent,
     AuthorizationComponent,
+    MedicsComponent,
+    SliderComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+<div class="categoriesContainer">
+  <div class="categoriesTitle"><span>კატეგორიები</span></div>
+  <div class="categoriesTitleLine"></div>
+  <div class="categoryItems">
+    <div class="categoryItem" *ngFor="let item of categories">
+      <div class="numberInCategory">
+        <span>({{ item.value }})</span>
+      </div>
+      <div class="categoryItemTitle">
+        <span>{{ item.category }}</span>
+      </div>
+      <app-svg-icon name="arrow-back-ios-rounded"></app-svg-icon>
+    </div>
+  </div>
+</div>

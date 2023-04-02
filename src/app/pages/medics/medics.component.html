@@ -1,1 +1,12 @@
-<app-slider></app-slider> <app-categories></app-categories>
+<app-slider></app-slider>
+
+<app-categories></app-categories>
+
+<div class="cardsContainer">
+  <div class="cardsGrid">
+    <app-medic-card
+      *ngFor="let item of medicItems"
+      [medicItem]="item"
+    ></app-medic-card>
+  </div>
+</div>

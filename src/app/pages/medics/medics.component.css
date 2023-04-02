@@ -1,0 +1,17 @@
+app-categories {
+  display: inline-block;
+  margin: 73px 60px 145px 150px;
+}
+
+.cardsContainer {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 73px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
+  row-gap: 20px;
+}

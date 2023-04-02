@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MedicsComponent } from './pages/medics/medics.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { MedicCardComponent } from './components/medic-card/medic-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MedicsComponent,
     SliderComponent,
     CategoriesComponent,
+    MedicCardComponent,
   ],
   imports: [
     BrowserModule,

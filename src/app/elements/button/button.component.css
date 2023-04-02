@@ -1,3 +1,6 @@
+.buttonContainer {
+  position: relative;
+}
 .buttonContainer input {
   font-family: "FiraGO-Regular";
   font-style: normal;
@@ -7,4 +10,8 @@
 
   color: #ffffff;
   border: none;
+}
+
+.buttonSVG {
+  position: absolute;
 }

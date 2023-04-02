@@ -7,10 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() value = '';
-  @Input() background = '';
   @Input() height = '';
   @Input() width = '';
   @Input() borderRadius = '';
+  @Input() border = '';
+  @Input() color = '';
+  @Input() iconRight = '';
+  @Input() iconLeft = '';
+  @Input() iconTopPos = '';
+  @Input() iconLeftPos = '';
   constructor() {}
 
   ngOnInit(): void {}

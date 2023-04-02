@@ -3,10 +3,24 @@
     type="button"
     [value]="value"
     [ngStyle]="{
-      background: background,
       'border-radius': borderRadius,
       height: height,
-      width: width
+      width: width,
+      color: color
     }"
   />
+  <app-svg-icon
+    class="iconRight buttonSVG"
+    *ngIf="iconRight"
+    [name]="iconRight"
+    [ngStyle]="{
+      top: iconTopPos,
+      left: iconLeftPos
+    }"
+  ></app-svg-icon>
+  <app-svg-icon
+    class="iconLeft buttonSVG"
+    *ngIf="iconLeft"
+    [name]="iconLeft"
+  ></app-svg-icon>
 </div>

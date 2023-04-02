@@ -1,0 +1,31 @@
+<div class="cardItem">
+  <div class="viewsContainer">
+    <app-svg-icon name="ic_baseline-remove-red-eye"></app-svg-icon>
+    <div class="numberOfViews">
+      <span>{{ spaceInNumbers(medicItem.views) }}</span>
+    </div>
+  </div>
+  <div class="profileImgContainer"><img [src]="medicItem.image" /></div>
+  <div class="fullNameContainer">
+    <span>{{ medicItem.firstName }} {{ medicItem.lastName }}</span>
+  </div>
+  <div class="medCategoryContainer">
+    <span>{{ medicItem.category }}</span>
+  </div>
+  <div class="reviewStars">
+    <app-svg-icon
+      *ngFor="let item of [1, 2, 3, 4, 5]"
+      name="material-symbols_star-rounded"
+    ></app-svg-icon>
+  </div>
+  <app-button
+    borderRadius="25px"
+    width="200px"
+    height="50px"
+    value="შესვლა"
+    iconRight="arrow-back-ios-rounded"
+    iconTopPos="18px"
+    iconLeftPos="257px"
+    color="#053354"
+  ></app-button>
+</div>

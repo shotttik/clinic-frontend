@@ -1,0 +1,83 @@
+.medicInfoContainer {
+  width: 1208px;
+  height: 250px;
+
+  background: #ffffff;
+  border: 1px solid #ecf2f8;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.05);
+  border-radius: 10px;
+}
+
+.medicProfileImg {
+  display: inline-block;
+  margin-top: 45px;
+  margin-left: 48px;
+}
+
+.medicMainInfoContainer {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 40px;
+}
+
+.medicFullName {
+  margin-top: 75px;
+}
+
+.medicFullName span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #053354;
+}
+
+.medicCategory {
+  margin-top: 17px;
+}
+
+.medicCategory span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: rgba(5, 51, 84, 0.3);
+}
+
+.medicReview {
+  margin-top: 16px;
+}
+
+.medicInfoLine {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 60px;
+  margin-left: 103px;
+
+  height: 140px;
+  width: 0px;
+  border: 1px solid #ecf2f8;
+}
+
+.medicHistory {
+  display: inline-block;
+  vertical-align: top;
+  width: 500px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 51px;
+}
+
+.medicHistory span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #053354;
+}

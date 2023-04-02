@@ -1,0 +1,14 @@
+app-categories {
+  display: inline-block;
+  margin: 41px 60px 145px 150px;
+}
+
+app-medic-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 41px;
+}
+
+app-calendar {
+  display: inline-block;
+}

@@ -19,6 +19,9 @@ import { MedicsComponent } from './pages/medics/medics.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { MedicCardComponent } from './components/medic-card/medic-card.component';
+import { ReservationComponent } from './pages/reservation/reservation.component';
+import { MedicInfoComponent } from './components/medic-info/medic-info.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { MedicCardComponent } from './components/medic-card/medic-card.component
     SliderComponent,
     CategoriesComponent,
     MedicCardComponent,
+    ReservationComponent,
+    MedicInfoComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,

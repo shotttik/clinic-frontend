@@ -1,0 +1,16 @@
+app-categories {
+  display: inline-block;
+  margin-top: 41px;
+  margin-left: 150px;
+}
+
+app-profile-info {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 42px;
+  margin-top: 41px;
+}
+
+app-calendar {
+  display: inline-block;
+}

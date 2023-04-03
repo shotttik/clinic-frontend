@@ -1,0 +1,49 @@
+.profileContainer {
+  height: 800px;
+  width: 366px;
+
+  background: #ffffff;
+  border: 1px solid #ecf2f8;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.05);
+  border-radius: 10px;
+}
+
+.profileImage {
+  margin-top: 45px;
+  margin-left: 104px;
+}
+
+.userFullName {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.userFullName span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #18a4e1;
+}
+.infoText {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.infoText span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+.infoText .mainSpan {
+  color: #053354;
+}
+.infoText .secondSpan {
+  color: rgba(5, 51, 84, 0.3);
+}

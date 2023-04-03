@@ -22,6 +22,8 @@ import { MedicCardComponent } from './components/medic-card/medic-card.component
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { MedicInfoComponent } from './components/medic-info/medic-info.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ReservationComponent,
     MedicInfoComponent,
     CalendarComponent,
+    ProfileInfoComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

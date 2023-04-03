@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MedicInfoComponent implements OnInit {
   medic = {
-    ID: '1',
+    ID: 1,
     firstName: 'გიორგი',
     lastName: 'ხორავა',
     category: 'კარდიოლოგი',

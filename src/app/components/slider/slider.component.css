@@ -1,11 +1,11 @@
-.medicsOfferContainer {
+.doctorsOfferContainer {
   position: relative;
   height: 600px;
   width: 100%;
   background-image: url("/assets/backgrounds/main.png");
 }
 
-.medicsContainerHover {
+.doctorsContainerHover {
   position: absolute;
   z-index: 3;
   height: 600px;
@@ -14,7 +14,7 @@
   background: rgba(5, 51, 84, 0.15);
 }
 
-.medicsContainerHalfHover {
+.doctorsContainerHalfHover {
   position: absolute;
   z-index: 4;
   width: 1087px;

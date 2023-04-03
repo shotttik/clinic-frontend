@@ -2,13 +2,13 @@ app-categories {
   display: inline-block;
   margin: 41px 60px 145px 150px;
 }
-
-app-medic-info {
+.reservation {
   display: inline-block;
-  vertical-align: top;
+}
+
+app-doctor-info {
   margin-top: 41px;
 }
 
 app-calendar {
-  display: inline-block;
 }

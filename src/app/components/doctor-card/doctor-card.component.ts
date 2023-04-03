@@ -2,12 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToolsService } from 'src/app/services/tools.service';
 
 @Component({
-  selector: 'app-medic-card',
-  templateUrl: './medic-card.component.html',
-  styleUrls: ['./medic-card.component.css'],
+  selector: 'app-doctor-card',
+  templateUrl: './doctor-card.component.html',
+  styleUrls: ['./doctor-card.component.css'],
 })
-export class MedicCardComponent implements OnInit {
-  @Input() medicItem: any;
+export class DoctorCardComponent implements OnInit {
+  @Input() doctor: any;
 
   constructor(private toolService: ToolsService) {}
   ngOnInit(): void {}

@@ -2,15 +2,15 @@
   <div class="viewsContainer">
     <app-svg-icon name="ic_baseline-remove-red-eye"></app-svg-icon>
     <div class="numberOfViews">
-      <span>{{ spaceInNumbers(medicItem.views) }}</span>
+      <span>{{ spaceInNumbers(doctor.views) }}</span>
     </div>
   </div>
-  <div class="profileImgContainer"><img [src]="medicItem.image" /></div>
+  <div class="profileImgContainer"><img [src]="doctor.image" /></div>
   <div class="fullNameContainer">
-    <span>{{ medicItem.firstName }} {{ medicItem.lastName }}</span>
+    <span>{{ doctor.firstName }} {{ doctor.lastName }}</span>
   </div>
   <div class="medCategoryContainer">
-    <span>{{ medicItem.category }}</span>
+    <span>{{ doctor.category }}</span>
   </div>
   <div class="reviewStars">
     <app-svg-icon

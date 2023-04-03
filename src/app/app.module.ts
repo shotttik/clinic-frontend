@@ -15,15 +15,15 @@ import { ButtonComponent } from './elements/button/button.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MedicsComponent } from './pages/medics/medics.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { MedicCardComponent } from './components/medic-card/medic-card.component';
 import { ReservationComponent } from './pages/reservation/reservation.component';
-import { MedicInfoComponent } from './components/medic-info/medic-info.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
+import { DoctorInfoComponent } from './components/doctor-info/doctor-info.component';
+import { DoctorsComponent } from './pages/doctors/doctors.component';
 
 @NgModule({
   declarations: [
@@ -36,15 +36,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
     RegistrationComponent,
     ButtonComponent,
     AuthorizationComponent,
-    MedicsComponent,
     SliderComponent,
     CategoriesComponent,
-    MedicCardComponent,
     ReservationComponent,
-    MedicInfoComponent,
     CalendarComponent,
     ProfileInfoComponent,
     ProfileComponent,
+    DoctorCardComponent,
+    DoctorInfoComponent,
+    DoctorsComponent,
   ],
   imports: [
     BrowserModule,

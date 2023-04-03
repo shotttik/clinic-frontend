@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-medics',
-  templateUrl: './medics.component.html',
-  styleUrls: ['./medics.component.css'],
+  selector: 'app-doctors',
+  templateUrl: './doctors.component.html',
+  styleUrls: ['./doctors.component.css'],
 })
-export class MedicsComponent implements OnInit {
-  medicItems = [
+export class DoctorsComponent implements OnInit {
+  doctorItems = [
     {
       ID: '1',
       firstName: 'გიორგი',

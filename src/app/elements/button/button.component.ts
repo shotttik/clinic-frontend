@@ -12,6 +12,7 @@ export class ButtonComponent implements OnInit {
   @Input() borderRadius = '';
   @Input() border = '';
   @Input() color = '';
+  @Input() background = '';
   @Input() iconRight = '';
   @Input() iconLeft = '';
   @Input() iconTopPos = '';

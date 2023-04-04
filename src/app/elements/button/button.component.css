@@ -13,5 +13,6 @@
 }
 
 .buttonSVG {
+  cursor: pointer;
   position: absolute;
 }

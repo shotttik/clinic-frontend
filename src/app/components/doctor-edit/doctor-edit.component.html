@@ -1,0 +1,82 @@
+<div class="editContainer">
+  <div class="leftInfoContainer">
+    <div class="doctorImage"><img [src]="doctor.image" alt="" /></div>
+    <div class="doctorFullName">
+      <span>{{ doctor.firstName }} {{ doctor.lastName }}</span>
+    </div>
+    <div class="doctorStatus">
+      <span>{{ doctor.status }}</span>
+    </div>
+    <div class="doctorCategory">
+      <span>{{ doctor.category }}</span>
+    </div>
+    <div class="doctorReview">
+      <app-svg-icon
+        name="material-symbols_star-rounded"
+        *ngFor="let item of [1, 2, 3, 4, 5]"
+      ></app-svg-icon>
+    </div>
+  </div>
+  <div class="rightEditContainer">
+    <div class="doctorPidContainer">
+      <app-svg-icon class="svgEdit" name="edit-svgrepo-com"></app-svg-icon>
+      <div class="doctorPid textInfo">
+        <span class="mainSpan">პირადი ნომერი: <br /></span>
+        <span class="secondSpan">{{ doctor.pid }}</span>
+      </div>
+    </div>
+
+    <div class="doctorEmailContainer">
+      <app-svg-icon class="svgEdit" name="edit-svgrepo-com"></app-svg-icon>
+      <div class="doctorEmail textInfo">
+        <span class="mainSpan">Email : <br /></span>
+        <span class="secondSpan">{{ doctor.email }}</span>
+      </div>
+    </div>
+
+    <div class="doctorPasswordContainer">
+      <app-svg-icon class="svgEdit" name="edit-svgrepo-com"></app-svg-icon>
+      <div class="doctorPassword textInfo">
+        <span class="mainSpan">პაროლის შეცვლა : <br /></span>
+      </div>
+    </div>
+  </div>
+  <div class="doctorReservationsContainer">
+    <app-svg-icon class="svgEdit" name="edit-svgrepo-com"></app-svg-icon>
+    <div class="doctorReservations textInfo">
+      <span class="mainSpan">დაჯავშნილია : <br /></span>
+      <span class="secondSpan">({{ doctor.reservations }})</span>
+    </div>
+  </div>
+</div>
+
+<div class="editButtons">
+  <app-button
+    iconLeft="plus-white-math"
+    class="addBtn"
+    value="დამატება"
+    width="170px"
+    height="50px"
+    background="#3ACF99"
+    borderRadius="50px"
+  ></app-button>
+  <app-button
+    class="editBtn"
+    iconLeft="edit-svgrepo-com"
+    value="რედაქტირება"
+    width="230px"
+    height="50px"
+    background="#ECF2F8"
+    color="#18A4E1"
+    borderRadius="50px"
+  ></app-button>
+  <app-button
+    class="deleteBtn"
+    iconLeft="delete-vector"
+    value="წაშლა"
+    width="170px"
+    height="50px"
+    background="#FF93A6"
+    borderRadius="50px"
+  ></app-button>
+</div>

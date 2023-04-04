@@ -1,0 +1,154 @@
+.editContainer {
+  width: 750px;
+  height: 315px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.05);
+  border-radius: 10px;
+}
+.editButtons {
+  margin-top: 61px;
+  margin-left: 151px;
+}
+.editButtons app-button {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.editButtons .addBtn ::ng-deep .buttonSVG {
+  top: 10px;
+  left: 10px;
+}
+
+.editButtons .editBtn ::ng-deep .buttonSVG {
+  top: 10px;
+  left: 25px;
+}
+
+.editButtons .deleteBtn ::ng-deep .buttonSVG {
+  top: 12px;
+  left: 25px;
+}
+
+.leftInfoContainer {
+  display: inline-block;
+  width: 255px;
+}
+.rightEditContainer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.doctorImage {
+  margin-top: 30px;
+  margin-left: 60px;
+}
+
+.doctorFullName {
+  margin-top: 10px;
+  text-align: center;
+}
+.doctorFullName span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #18a4e1;
+}
+
+.doctorStatus {
+  margin-top: 5px;
+  text-align: center;
+}
+.doctorStatus span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: #053354;
+}
+
+.doctorCategory {
+  margin-top: 1px;
+  text-align: center;
+}
+
+.doctorCategory span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: rgba(5, 51, 84, 0.3);
+}
+
+.doctorReview {
+  margin-top: 7px;
+  text-align: center;
+}
+.svgEdit {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.svgEdit:hover ::ng-deep path,
+.svgEdit.active ::ng-deep path {
+  fill: black;
+}
+
+.svgEdit ::ng-deep path {
+  fill: #d9d9d9;
+}
+
+.textInfo {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.mainSpan {
+  color: rgba(5, 51, 84, 1);
+}
+.secondSpan {
+  color: rgba(5, 51, 84, 0.3);
+}
+
+.textInfo {
+  display: inline-block;
+  margin-left: 14px;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.rightEditContainer {
+  display: inline-block;
+  margin-top: 49px;
+  margin-left: 20px;
+}
+
+.doctorEmailContainer {
+  margin-top: 26px;
+}
+
+.doctorPasswordContainer {
+  margin-top: 32px;
+}
+
+.doctorReservations {
+  text-align: center;
+}
+
+.doctorReservationsContainer {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 49px;
+}

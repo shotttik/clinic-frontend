@@ -24,6 +24,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DoctorCardComponent } from './components/doctor-card/doctor-card.component';
 import { DoctorInfoComponent } from './components/doctor-info/doctor-info.component';
 import { DoctorsComponent } from './pages/doctors/doctors.component';
+import { DoctorEditComponent } from './components/doctor-edit/doctor-edit.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { DoctorsComponent } from './pages/doctors/doctors.component';
     DoctorCardComponent,
     DoctorInfoComponent,
     DoctorsComponent,
+    DoctorEditComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

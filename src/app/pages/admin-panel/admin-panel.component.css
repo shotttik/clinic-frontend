@@ -1,0 +1,113 @@
+app-doctor-edit,
+app-calendar {
+  display: inline-block;
+  vertical-align: top;
+}
+app-doctor-edit {
+  margin-top: 131px;
+  margin-left: 150px;
+}
+
+.menuContainer {
+  margin-top: 45px;
+  margin-left: 161px;
+}
+.menuItemsContainer {
+  display: inline-block;
+  margin-right: 3px;
+  width: 516px;
+  height: 50px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.05);
+  border-radius: 25px;
+}
+
+.menuFigure {
+  padding-top: 17px;
+  margin-left: 11px;
+  display: inline-block;
+}
+.menuFigure div {
+  margin-bottom: 4px;
+  height: 3px;
+  left: 172px;
+  top: 292px;
+
+  background: #18a4e1;
+  border-radius: 10px;
+}
+.longLine {
+  width: 28px;
+}
+
+.mediumLine {
+  width: 23px;
+}
+.smallLine {
+  width: 16px;
+}
+
+.menuItem {
+  display: inline-block;
+  vertical-align: super;
+  cursor: pointer;
+  margin-left: 35px;
+}
+
+.menuItem span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #053354;
+}
+
+.menuItem.active span,
+.menuItem:hover span {
+  color: #18a4e1;
+}
+
+.menuItems {
+  display: inline-block;
+}
+
+.menuTabsContainer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.menuTab {
+  display: inline-flex;
+  margin-right: 20px;
+  width: 350px;
+  height: 50px;
+  border: 1px solid rgba(24, 164, 225, 0.3);
+  border-radius: 50px;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menuTab span {
+  font-family: "FiraGO";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  color: #18a4e1;
+}
+
+.menuTab.active {
+  background: #f0faff;
+  border: none;
+}
+.menuTab:hover {
+  background: #f0faff;
+}

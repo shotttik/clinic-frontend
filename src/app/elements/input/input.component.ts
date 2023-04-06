@@ -14,6 +14,7 @@ export class InputComponent implements OnInit {
   @Input() error = '';
   @Input() type = 'text';
   @Output() inputValueEvent = new EventEmitter<string>();
+  value = '';
   constructor() {}
 
   ngOnInit(): void {}

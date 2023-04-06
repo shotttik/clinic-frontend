@@ -9,7 +9,7 @@ import { SvgIconComponent } from './svg-icon/svg-icon.component';
 import { SearchComponent } from './components/search/search.component';
 import { InputComponent } from './elements/input/input.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ButtonComponent } from './elements/button/button.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
@@ -57,6 +57,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

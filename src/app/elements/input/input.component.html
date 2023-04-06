@@ -6,6 +6,7 @@
     [id]="for"
     [placeholder]="placeholder"
     #ival
+    [(ngModel)]="value"
     (change)="valueChanged(ival.value)"
   />
   <p class="error" *ngIf="error">{{ error }}</p>

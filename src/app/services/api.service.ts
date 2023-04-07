@@ -10,7 +10,7 @@ export class ApiService {
       'Content-Type': 'application/json; charset=utf-8',
     }),
   };
-  private baseUrl = 'https://localhost:7154';
+  private baseUrl = 'https://localhost:7039';
 
   constructor(private http: HttpClient) {}
 

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -14,12 +21,21 @@ export class InputComponent implements OnInit {
   @Input() error = '';
   @Input() type = 'text';
   @Output() inputValueEvent = new EventEmitter<string>();
+  @ViewChild('ival') inputElement: any;
   value = '';
+  show: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
 
   valueChanged(v: string) {
     this.inputValueEvent.emit(v);
+  }
+  password() {
+    this.show = !this.show;
+    this.show
+      ? (this.inputElement.nativeElement.type = 'text')
+      : (this.inputElement.nativeElement.type = 'password');
   }
 }

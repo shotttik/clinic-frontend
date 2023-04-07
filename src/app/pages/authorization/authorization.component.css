@@ -31,3 +31,7 @@
 
   color: #053354;
 }
+
+.authPassword ::ng-deep .showPasswordIcon {
+  top: -20px;
+}

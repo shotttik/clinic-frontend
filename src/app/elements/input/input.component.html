@@ -1,4 +1,4 @@
-<div class="searchInput">
+<div class="inputContainer">
   <label class="mainLabel" *ngIf="for" [for]="for">{{ label }} </label>
   <p class="infoLabel" *ngIf="infoLabel">{{ infoLabel }}</p>
   <input
@@ -9,6 +9,11 @@
     [(ngModel)]="value"
     (change)="valueChanged(ival.value)"
   />
+
+  <div class="showPasswordIcon" *ngIf="type == 'password'" (click)="password()">
+    <app-svg-icon name="eye-svgrepo-com"></app-svg-icon>
+  </div>
+
   <p class="error" *ngIf="error">{{ error }}</p>
   <app-svg-icon *ngIf="svgName" [name]="svgName"></app-svg-icon>
 </div>

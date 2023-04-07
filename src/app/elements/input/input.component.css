@@ -1,8 +1,8 @@
-.searchInput {
+.inputContainer {
   position: relative;
   /* display: inline-block; */
 }
-.searchInput input {
+.inputContainer input {
   width: 440px;
   height: 50px;
   background: #ffffff;
@@ -14,7 +14,7 @@
   caret-color: rgba(24, 164, 225, 3);
 }
 
-.searchInput .mainLabel {
+.inputContainer .mainLabel {
   display: block;
   margin-bottom: 5px;
   margin-left: 20px;
@@ -26,7 +26,7 @@
 
   color: #053354;
 }
-.searchInput input:focus {
+.inputContainer input:focus {
   border: 1px solid rgba(24, 164, 225, 0.5);
 }
 app-svg-icon {
@@ -60,4 +60,11 @@ app-svg-icon {
   /* identical to box height */
 
   color: #ff2c52;
+}
+
+.showPasswordIcon {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  top: 0;
 }

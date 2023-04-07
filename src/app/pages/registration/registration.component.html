@@ -6,6 +6,7 @@
       placeholder="( მინიმუმ 5 სიმბოლო )"
       label="სახელი"
       for="name"
+      [error]="firstNameError"
       (inputValueEvent)="setFirstNameValue($event)"
       #firstNameInput
     ></app-input>
@@ -16,6 +17,7 @@
       label="Email"
       for="email"
       #emailInput
+      [error]="emailError"
       (inputValueEvent)="setEmailValue($event)"
     ></app-input>
     <app-input
@@ -24,6 +26,7 @@
       label="პირადი ნომერი"
       for="pid"
       #pidInput
+      [error]="pidError"
       (inputValueEvent)="setPidValue($event)"
     ></app-input>
   </div>
@@ -33,6 +36,7 @@
       label="გვარი"
       for="lastName"
       #lastNameInput
+      [error]="lastNameError"
       (inputValueEvent)="setLastNameValue($event)"
     ></app-input>
     <!-- <app-input
@@ -49,6 +53,7 @@
       label="პაროლი"
       for="password"
       #passwordInput
+      [error]="passwordError"
       (inputValueEvent)="setPasswordValue($event)"
     ></app-input>
   </div>

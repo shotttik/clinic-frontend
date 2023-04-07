@@ -26,6 +26,7 @@ import { DoctorInfoComponent } from './components/doctor-info/doctor-info.compon
 import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { DoctorEditComponent } from './components/doctor-edit/doctor-edit.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,8 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    //primeng
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

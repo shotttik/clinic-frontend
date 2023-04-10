@@ -18,14 +18,16 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { InputComponent } from 'src/app/elements/input/input.component';
 import { ApiService } from 'src/app/services/api.service';
 import { MessageService } from 'primeng/api';
+import { ToolsService } from 'src/app/services/tools.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
+  providers: [HeaderComponent],
 })
 export class RegistrationComponent implements AfterViewInit {
-  @ViewChild(HeaderComponent) headerComponent: HeaderComponent | undefined;
   registerForm: FormGroup | undefined;
 
   firstNameError = '';
@@ -38,7 +40,9 @@ export class RegistrationComponent implements AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private apiServices: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private headerComponent: HeaderComponent,
+    private authService: AuthService
   ) {}
 
   ngAfterViewInit(): void {
@@ -69,8 +73,7 @@ export class RegistrationComponent implements AfterViewInit {
       return;
     }
 
-    let data = JSON.stringify(this.registerForm!.value);
-    this.apiServices.registerUser(data).subscribe(
+    this.apiServices.registerUser(this.registerForm!.value).subscribe(
       (suc: any) => {
         this.messageService.add({
           severity: 'success',
@@ -115,26 +118,8 @@ export class RegistrationComponent implements AfterViewInit {
     return value;
   }
 
-  getFormValidationErrors() {
-    const result: { control: string; error: string; value: any }[] = [];
-    Object.keys(this.registerForm!.controls).forEach((key) => {
-      const controlErrors: ValidationErrors | null =
-        this.registerForm!.get(key)!.errors;
-      if (controlErrors) {
-        Object.keys(controlErrors).forEach((keyError) => {
-          result.push({
-            control: key,
-            error: keyError,
-            value: controlErrors[keyError],
-          });
-        });
-      }
-    });
-    return result;
-  }
-
   displayErrors() {
-    const errors = this.getFormValidationErrors();
+    const errors = this.authService.getFormValidationErrors(this.registerForm!);
     errors.forEach((e) => {
       if (e.control == 'firstName') {
         if (e.error == 'required') {

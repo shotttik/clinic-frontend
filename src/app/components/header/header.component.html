@@ -1,5 +1,5 @@
 <header>
-  <div class="headerIconContainer">
+  <div class="headerIconContainer" (click)="changePage('')">
     <img class="headerImg" src="/assets/logos/logo 1.png" />
     <p class="headerIconText">კლინიკა</p>
   </div>
@@ -7,14 +7,17 @@
     <div
       class="navItem"
       *ngFor="let navItem of navItems"
-      [ngClass]="{ active: navItem == 'ექიმები' }"
+      [ngClass]="{ active: IsCurrentPage(navItem.url) }"
     >
-      <span>{{ navItem }}</span>
+      <span (click)="changePage(navItem.url)">{{ navItem.title }}</span>
+      <div class="navLineActive" *ngIf="IsCurrentPage(navItem.url)"></div>
     </div>
     <div class="navLine"></div>
-    <div class="navLineActive"></div>
   </div>
-  <div class="authContainer">
+  <div class="authedContainer" *ngIf="IsAuthenticated()">
+    <span>{{ getUserEmail() }}</span>
+  </div>
+  <div class="authContainer" *ngIf="!IsAuthenticated()">
     <div
       class="authorization"
       [class.active]="authDialogOpened"
@@ -23,7 +26,11 @@
       <span>ავტორიზაცია</span>
     </div>
     <div class="slashFigure"><span>/</span></div>
-    <div class="registration" [class.active]="!authDialogOpened">
+    <div
+      class="registration"
+      [class.active]="!authDialogOpened && IsCurrentPage('/register')"
+      (click)="changePage('register')"
+    >
       <span>რეგისტრაცია</span>
     </div>
   </div>

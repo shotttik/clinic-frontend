@@ -1,13 +1,18 @@
+<p-toast position="top-right"> </p-toast>
 <div class="authContainer">
   <div class="authTitle"><span>ავტორიზაცია</span></div>
   <app-input
     class="authEmail"
-    placeholder="ელფოსტა/ტელეფონის ნომერი"
+    placeholder="ელფოსტა"
+    [error]="emailError"
+    (inputValueEvent)="setEmailValue($event)"
   ></app-input>
   <app-input
     class="authPassword"
     placeholder="პაროლი"
     type="password"
+    [error]="passwordError"
+    (inputValueEvent)="setPasswordValue($event)"
   ></app-input>
   <div class="restorePassword"><span>პაროლის აღდგენა</span></div>
   <app-button
@@ -16,5 +21,6 @@
     width="180px"
     height="40px"
     value="შესვლა"
+    (click)="loginUser()"
   ></app-button>
 </div>

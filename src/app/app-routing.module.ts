@@ -6,10 +6,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { RoleGuard } from './services/role.guard';
+import { LoggedInGuardGuard } from './services/logged-in-guard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' },
-  { path: 'register', component: RegistrationComponent },
+  {
+    path: 'register',
+    component: RegistrationComponent,
+    canActivate: [LoggedInGuardGuard],
+  },
   { path: 'reservation', component: ReservationComponent },
   {
     path: 'profile',

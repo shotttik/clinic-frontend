@@ -17,7 +17,7 @@
 
 .authEmail {
   display: block;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
 .restorePassword {
   margin: 5px 0 42px 334px;
@@ -34,4 +34,5 @@
 
 .authPassword ::ng-deep .showPasswordIcon {
   top: -20px;
+  right: 24px;
 }

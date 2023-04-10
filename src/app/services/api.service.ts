@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  registerUser(data: any) {
+  registerUser(data: FormGroup) {
     let url = this.baseUrl + '/register';
+    return this.http.post(url, data, this.httpOptions);
+  }
+
+  loginUser(data: FormGroup) {
+    let url = this.baseUrl + '/login';
     return this.http.post(url, data, this.httpOptions);
   }
 

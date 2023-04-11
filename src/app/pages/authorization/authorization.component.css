@@ -20,7 +20,7 @@
   padding-bottom: 30px;
 }
 ::ng-deep .restorePassword {
-  margin: 5px 0 42px 334px;
+  margin: 5px 0 42px 304px;
 }
 ::ng-deep .restorePassword span {
   font-family: "FiraGO-Regular";
@@ -34,7 +34,6 @@
 
 ::ng-deep .authPassword ::ng-deep .showPasswordIcon {
   top: -20px;
-  right: 24px;
 }
 
 ::ng-deep .authEmail ::ng-deep app-svg-icon {

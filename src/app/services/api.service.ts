@@ -25,6 +25,15 @@ export class ApiService {
     return this.http.post(url, data, this.httpOptions);
   }
 
+  createRestoreCode(data: FormGroup) {
+    let url = this.baseUrl + '/createRestoreCode';
+    return this.http.post(url, data, this.httpOptions);
+  }
+  resetPassword(data: FormGroup) {
+    let url = this.baseUrl + '/resetPassword';
+    return this.http.post(url, data, this.httpOptions);
+  }
+
   generateBackPath(path: string) {
     return this.baseUrl + '\\' + path;
   }

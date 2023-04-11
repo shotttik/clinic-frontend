@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SvgIconComponent } from './svg-icon/svg-icon.component';
 import { SearchComponent } from './components/search/search.component';
 import { InputComponent } from './elements/input/input.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ButtonComponent } from './elements/button/button.component';
@@ -29,6 +29,7 @@ import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { ToastModule } from 'primeng/toast';
 import { RestorePasswordComponent } from './components/restore-password/restore-password.component';
 import { LoginComponent } from './components/login/login.component';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,13 @@ import { LoginComponent } from './components/login/login.component';
     //primeng
     ToastModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,10 +1,10 @@
 .authContainer {
   margin: 66px 111px 89px 144px;
 }
-.authTitle {
+::ng-deep .authTitle {
   margin-bottom: 44px;
 }
-.authTitle span {
+::ng-deep .authTitle span {
   margin-bottom: 44px;
   font-family: "FiraGO-Regular";
   font-style: normal;
@@ -15,14 +15,14 @@
   color: #18a4e1;
 }
 
-.authEmail {
+::ng-deep .authEmail {
   display: block;
   padding-bottom: 30px;
 }
-.restorePassword {
+::ng-deep .restorePassword {
   margin: 5px 0 42px 334px;
 }
-.restorePassword span {
+::ng-deep .restorePassword span {
   font-family: "FiraGO-Regular";
   font-style: normal;
   font-weight: 400;
@@ -32,7 +32,18 @@
   color: #053354;
 }
 
-.authPassword ::ng-deep .showPasswordIcon {
+::ng-deep .authPassword ::ng-deep .showPasswordIcon {
   top: -20px;
   right: 24px;
+}
+
+::ng-deep .authEmail ::ng-deep app-svg-icon {
+  top: 15px;
+}
+::ng-deep .restorePassword {
+  cursor: pointer;
+}
+
+::ng-deep .restorePassword {
+  cursor: pointer;
 }

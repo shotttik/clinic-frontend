@@ -27,6 +27,8 @@ import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { DoctorEditComponent } from './components/doctor-edit/doctor-edit.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { ToastModule } from 'primeng/toast';
+import { RestorePasswordComponent } from './components/restore-password/restore-password.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ToastModule } from 'primeng/toast';
     DoctorsComponent,
     DoctorEditComponent,
     AdminPanelComponent,
+    RestorePasswordComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

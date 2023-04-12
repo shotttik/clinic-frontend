@@ -30,7 +30,8 @@ import { ToastModule } from 'primeng/toast';
 import { RestorePasswordComponent } from './components/restore-password/restore-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { InterceptorService } from './services/interceptor.service';
-
+import { WaitDialogComponent } from './elements/wait-dialog/wait-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { InterceptorService } from './services/interceptor.service';
     AdminPanelComponent,
     RestorePasswordComponent,
     LoginComponent,
+    WaitDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,8 @@ import { InterceptorService } from './services/interceptor.service';
     ReactiveFormsModule,
     //primeng
     ToastModule,
+    //angularMat
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

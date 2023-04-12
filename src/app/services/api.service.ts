@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ToolsService } from './tools.service';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,7 @@ export class ApiService {
   };
   private baseUrl = 'https://localhost:7039';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toolsService: ToolsService) {}
 
   registerUser(data: FormGroup) {
     let url = this.baseUrl + '/register';
@@ -22,12 +24,22 @@ export class ApiService {
 
   loginUser(data: FormGroup) {
     let url = this.baseUrl + '/login';
-    return this.http.post(url, data, this.httpOptions);
+    this.toolsService.openWaitDialog();
+    return this.http.post<any>(url, data, this.httpOptions).pipe(
+      tap(() => {
+        this.toolsService.closeWaitDialog();
+      })
+    );
   }
 
   createRestoreCode(data: FormGroup) {
     let url = this.baseUrl + '/createRestoreCode';
-    return this.http.post(url, data, this.httpOptions);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      tap(() => {
+        dialogRef.close();
+      })
+    );
   }
   resetPassword(data: FormGroup) {
     let url = this.baseUrl + '/resetPassword';

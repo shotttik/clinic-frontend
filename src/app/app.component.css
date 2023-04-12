@@ -20,3 +20,7 @@
   width: 157px;
   height: 157px;
 }
+
+::ng-deep.custom-dialog-container {
+  background-color: transparent;
+}

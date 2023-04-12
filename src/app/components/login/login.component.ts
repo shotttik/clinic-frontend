@@ -5,6 +5,8 @@ import { MessageService } from 'primeng/api';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ToolsService } from 'src/app/services/tools.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,8 @@ export class LoginComponent implements AfterViewInit {
     private authService: AuthService,
     private apiService: ApiService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngAfterViewInit(): void {
@@ -52,26 +55,26 @@ export class LoginComponent implements AfterViewInit {
       return;
     }
 
-    this.apiService.loginUser(this.loginForm!.value).subscribe(
-      (suc: any) => {
+    this.apiService.loginUser(this.loginForm!.value).subscribe({
+      next: (suc) => {
         this.messageService.add({
           severity: 'success',
           summary: 'საჭიროა ვერიფიკაცია!',
           detail: 'ავტორიზაცია წარმატებით გაიარეთ.',
         });
         localStorage.setItem('accessToken', suc.token);
-        // this.headerComponent.closeDialog(); @TODO close dialog
+        this.dialog.closeAll();
         this.router.navigate(['/profile']);
       },
-      (err) => {
+      error: (err) => {
         console.log(err);
         this.messageService.add({
           severity: 'error',
           summary: 'ყურადღება!',
           detail: err.error,
         });
-      }
-    );
+      },
+    });
   }
 
   displayErrors() {

@@ -111,3 +111,9 @@ app-doctor-edit {
 .menuTab:hover {
   background: #f0faff;
 }
+
+app-profile-info {
+  display: block;
+  margin: auto;
+  width: 10%;
+}

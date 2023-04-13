@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile-info',
@@ -17,6 +18,11 @@ export class ProfileInfoComponent implements OnInit {
     reservations: 2,
     image: 'assets/images/profileImg.png',
   };
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private authService: AuthService) {}
+  ngOnInit(): void {
+    console.log(this.getUserData());
+  }
+  getUserData() {
+    return this.authService.decodeToken();
+  }
 }

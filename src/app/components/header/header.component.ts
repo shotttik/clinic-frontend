@@ -63,4 +63,7 @@ export class HeaderComponent implements OnInit {
   getUserEmail() {
     return this.authService.decodeToken().Email;
   }
+  IsAdmin() {
+    return this.authService.decodeToken().IsAdmin;
+  }
 }

@@ -15,7 +15,7 @@ const routes: Routes = [
     component: RegistrationComponent,
     canActivate: [LoggedInGuardGuard],
   },
-  { path: 'reservation', component: ReservationComponent },
+  { path: 'doctor/:doctorId', component: ReservationComponent },
   {
     path: 'profile',
     component: ProfileComponent,
@@ -24,6 +24,18 @@ const routes: Routes = [
   { path: 'doctors', component: DoctorsComponent },
   {
     path: 'admin',
+    component: AdminPanelComponent,
+    canActivate: [RoleGuard],
+    data: { IsAdmin: true },
+  },
+  {
+    path: 'admin/categories',
+    component: AdminPanelComponent,
+    canActivate: [RoleGuard],
+    data: { IsAdmin: true },
+  },
+  {
+    path: 'admin/register/:registerType',
     component: AdminPanelComponent,
     canActivate: [RoleGuard],
     data: { IsAdmin: true },

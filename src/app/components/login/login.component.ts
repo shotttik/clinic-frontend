@@ -31,7 +31,11 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\\W).+$'),
+      ]),
     });
   }
 
@@ -94,6 +98,10 @@ export class LoginComponent implements AfterViewInit {
         }
         if (e.error == 'minlength') {
           this.passwordError = 'უნდა შეიცავდეს 8 სიმბოლოს';
+        }
+        if (e.error == 'pattern') {
+          this.passwordError =
+            'უნდა შეიცავდეს რიცხვს, სიმბოლოს, დიდ/პატარა ასო';
         }
       }
     });

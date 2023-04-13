@@ -32,6 +32,8 @@ import { LoginComponent } from './components/login/login.component';
 import { InterceptorService } from './services/interceptor.service';
 import { WaitDialogComponent } from './elements/wait-dialog/wait-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AdminCategoriesComponent } from './components/admin/admin-categories/admin-categories.component';
+import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     RestorePasswordComponent,
     LoginComponent,
     WaitDialogComponent,
+    AdminCategoriesComponent,
+    AdminRegisterComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ export class RoleGuard implements CanActivate {
       return false;
     }
     if (IsAdmin) {
-      return tokenPayload.IsSuperUser == 'True';
+      return tokenPayload.IsAdmin == 'True';
     }
     return true;
   }

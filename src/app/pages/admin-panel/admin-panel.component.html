@@ -6,17 +6,44 @@
       <div class="smallLine"></div>
     </div>
     <div class="menuItems">
-      <div class="menuItem"><span>რეგისტრაცია</span></div>
-      <div class="menuItem"><span>კატეგორიები</span></div>
-      <div class="menuItem active"><span>ექიმები</span></div>
+      <div class="menuItem" [ngClass]="{ active: isRegisterPage }">
+        <span (click)="changePage('/admin/register/doctor')">რეგისტრაცია</span>
+      </div>
+      <div class="menuItem" [ngClass]="{ active: isCategoriesPage }">
+        <span (click)="changePage('/admin/categories')">კატეგორიები</span>
+      </div>
+      <div class="menuItem" [ngClass]="{ active: isAdminPage }">
+        <span (click)="changePage('/admin')">პროფილი</span>
+      </div>
     </div>
   </div>
-  <div class="menuTabsContainer">
-    <div class="menuTab active"><span>ექიმი</span></div>
-    <div class="menuTab"><span>მომხმარებელი</span></div>
-    <div class="menuTab"><span>ადმინისტრატორი</span></div>
+  <div class="menuTabsContainer" *ngIf="registerType">
+    <div
+      class="menuTab"
+      [ngClass]="{ active: registerType == 'doctor' }"
+      (click)="changePage('/admin/register/doctor')"
+    >
+      <span>ექიმი</span>
+    </div>
+    <div
+      class="menuTab"
+      [ngClass]="{ active: registerType == 'user' }"
+      (click)="changePage('/admin/register/user')"
+    >
+      <span>მომხმარებელი</span>
+    </div>
+    <div
+      class="menuTab"
+      [ngClass]="{ active: registerType == 'admin' }"
+      (click)="changePage('/admin/register/admin')"
+    >
+      <span>ადმინისტრატორი</span>
+    </div>
   </div>
 </div>
-<app-doctor-edit></app-doctor-edit>
+<app-profile-info *ngIf="isAdminPage"></app-profile-info>
+<app-admin-categories *ngIf="isCategoriesPage"></app-admin-categories>
+<app-admin-register *ngIf="isRegisterPage"></app-admin-register>
+<!-- <app-doctor-edit></app-doctor-edit>
 
-<app-calendar></app-calendar>
+<app-calendar></app-calendar> -->

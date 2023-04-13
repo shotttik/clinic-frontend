@@ -24,22 +24,12 @@ export class ApiService {
 
   loginUser(data: FormGroup) {
     let url = this.baseUrl + '/login';
-    this.toolsService.openWaitDialog();
-    return this.http.post<any>(url, data, this.httpOptions).pipe(
-      tap(() => {
-        this.toolsService.closeWaitDialog();
-      })
-    );
+    return this.http.post<any>(url, data, this.httpOptions);
   }
 
   createRestoreCode(data: FormGroup) {
     let url = this.baseUrl + '/createRestoreCode';
-    const dialogRef = this.toolsService.openWaitDialog();
-    return this.http.post(url, data, this.httpOptions).pipe(
-      tap(() => {
-        dialogRef.close();
-      })
-    );
+    return this.http.post(url, data, this.httpOptions);
   }
   resetPassword(data: FormGroup) {
     let url = this.baseUrl + '/resetPassword';

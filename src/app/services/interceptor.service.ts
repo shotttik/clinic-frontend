@@ -5,13 +5,14 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, finalize } from 'rxjs';
+import { ToolsService } from './tools.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterceptorService implements HttpInterceptor {
-  constructor() {}
+  constructor(private toolsService: ToolsService) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -21,7 +22,11 @@ export class InterceptorService implements HttpInterceptor {
     if (token) {
       req = req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
     }
-
-    return next.handle(req);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return next.handle(req).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
 }

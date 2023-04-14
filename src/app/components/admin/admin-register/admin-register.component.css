@@ -41,3 +41,9 @@ app-input {
 .isAdmin {
   margin-left: 50px;
 }
+
+app-file-upload {
+  display: inline-block;
+  margin-left: 50px;
+  vertical-align: bottom;
+}

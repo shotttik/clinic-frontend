@@ -12,8 +12,15 @@ select {
   border: 1px solid #ecf2f8;
   border-radius: 50px;
   padding-left: 20px;
-}
 
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #053354;
+  appearance: none;
+}
 .error {
   position: absolute;
   margin-top: 10px;
@@ -26,4 +33,25 @@ select {
   /* identical to box height */
 
   color: #ff2c52;
+}
+
+.custom-select:focus {
+  border: 1px solid rgba(24, 164, 225, 0.5);
+}
+
+select::placeholder {
+  color: gray;
+}
+
+.mainLabel {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #053354;
 }

@@ -1,0 +1,13 @@
+<div class="fileUploadContainer">
+  <span class="mainLabel">{{ label }}</span>
+  <label for="file-input" class="custom-file-upload">{{ fileName }}</label>
+  <input
+    type="file"
+    id="file-input"
+    (change)="onFileSelected($event)"
+    class="custom-file-upload"
+  />
+  <div class="fileUploadIcon">
+    <app-svg-icon [name]="iconName"></app-svg-icon>
+  </div>
+</div>

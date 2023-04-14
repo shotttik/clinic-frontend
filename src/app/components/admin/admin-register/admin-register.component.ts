@@ -156,6 +156,10 @@ export class AdminRegisterComponent implements OnInit {
     this.categoryError = '';
     return value;
   }
+  setImageValue(value: any) {
+    this.createDoctorForm!.controls['image'].setValue(value);
+    return value;
+  }
   displayErrors(form: FormGroup) {
     const errors = this.authService.getFormValidationErrors(form);
     errors.forEach((e) => {

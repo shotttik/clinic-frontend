@@ -64,6 +64,11 @@
       placeholder="აირჩიე კატეგორია"
       [error]="categoryError"
     ></app-select>
+    <app-file-upload
+      label="ფოტოსურათი"
+      iconName="imageUpload"
+      (fileValueEvent)="setImageValue($event)"
+    ></app-file-upload>
   </div>
   <app-button
     (click)="registerUser()"

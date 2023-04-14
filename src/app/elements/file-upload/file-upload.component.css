@@ -1,0 +1,55 @@
+.fileUploadContainer {
+  position: relative;
+}
+
+input[type="file"] {
+  display: none;
+}
+.fileUploadContainer label {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #053354;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  width: 440px;
+  height: 50px;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #555;
+  border: 1px solid #ecf2f8;
+  border-radius: 50px;
+  backdrop-filter: blur(50px);
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+.custom-file-upload:hover {
+  background-color: rgba(24, 164, 225, 0.5);
+}
+
+.mainLabel {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #053354;
+}
+
+.fileUploadIcon {
+  position: absolute;
+  cursor: pointer;
+  right: 21px;
+  top: 39px;
+}

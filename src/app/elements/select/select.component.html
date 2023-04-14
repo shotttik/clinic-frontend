@@ -1,7 +1,10 @@
 <div class="selectContainer">
+  <span class="mainLabel">კატეგორია</span>
+
   <select
     [(ngModel)]="selectedOption"
     (ngModelChange)="valueChanged(selectedOption)"
+    class="custom-select"
   >
     <option value="" disabled selected>{{ placeholder }}</option>
 

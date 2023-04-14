@@ -35,6 +35,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AdminCategoriesComponent } from './components/admin/admin-categories/admin-categories.component';
 import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component';
 import { SelectComponent } from './elements/select/select.component';
+import { FileUploadComponent } from './elements/file-upload/file-upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +64,7 @@ import { SelectComponent } from './elements/select/select.component';
     AdminCategoriesComponent,
     AdminRegisterComponent,
     SelectComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,78 @@
-<p>admin-register works!</p>
+<div class="regContainer">
+  <div class="regTitle"><span>რეგისტრაცია</span></div>
+  <div class="regInfoFirst">
+    <app-input
+      class="name"
+      placeholder="( მინიმუმ 5 სიმბოლო )"
+      label="სახელი"
+      for="name"
+      #firstNameInput
+      [error]="firstNameError"
+      (inputValueEvent)="setFirstNameValue($event)"
+    ></app-input>
+    <app-input
+      class="email"
+      type="email"
+      svgName="mail-right-arrow"
+      label="Email"
+      for="email"
+      #emailInput
+      [error]="emailError"
+      (inputValueEvent)="setEmailValue($event)"
+    ></app-input>
+    <app-input
+      class="pid"
+      placeholder="00000000000"
+      label="პირადი ნომერი"
+      for="pid"
+      #pidInput
+      [error]="pidError"
+      (inputValueEvent)="setPidValue($event)"
+    ></app-input>
+  </div>
+  <div class="regInfoSecond">
+    <app-input
+      class="lastName"
+      label="გვარი"
+      for="lastName"
+      #lastNameInput
+      [error]="lastNameError"
+      (inputValueEvent)="setLastNameValue($event)"
+    ></app-input>
+    <app-input
+      *ngIf="registerType != 'doctor'"
+      class="password"
+      type="password"
+      placeholder="( მინიმუმ 8 სიმბოლო : @ 7 , )"
+      label="პაროლი"
+      for="password"
+      #passwordInput
+      [error]="passwordError"
+      (inputValueEvent)="setPasswordValue($event)"
+    ></app-input>
+    <app-input
+      *ngIf="registerType == 'admin'"
+      class="isAdmin"
+      placeholder="ადმინისტრატორის სტატუსი არჩეულია"
+      label="ადმინისტრატორი"
+      for="isAdmin"
+      [disabled]="true"
+      #isAdminInput
+    ></app-input>
+    <app-select
+      *ngIf="registerType == 'doctor'"
+      (selectValueEvent)="setSelectValue($event)"
+      placeholder="აირჩიე კატეგორია"
+      [error]="categoryError"
+    ></app-select>
+  </div>
+  <app-button
+    (click)="registerUser()"
+    class="regButton"
+    value="რეგისტრაცია"
+    background="#053354"
+    height="50px"
+    width="180px"
+    borderRadius="50px"
+  ></app-button>
+</div>

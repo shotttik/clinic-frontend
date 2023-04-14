@@ -20,6 +20,7 @@ export class InputComponent implements OnInit {
   @Input() infoLabel = '';
   @Input() error = '';
   @Input() type = 'text';
+  @Input() disabled = false;
   @Output() inputValueEvent = new EventEmitter<string>();
   @ViewChild('ival') inputElement: any;
   value = '';

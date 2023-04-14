@@ -21,6 +21,14 @@ export class ApiService {
     let url = this.baseUrl + '/register';
     return this.http.post(url, data, this.httpOptions);
   }
+  createUser(data: FormGroup) {
+    let url = this.baseUrl + '/createUser';
+    return this.http.post(url, data, this.httpOptions);
+  }
+  createDoctor(data: FormGroup) {
+    let url = this.baseUrl + '/createDoctor';
+    return this.http.post(url, data, this.httpOptions);
+  }
 
   loginUser(data: FormGroup) {
     let url = this.baseUrl + '/login';

@@ -34,6 +34,7 @@ import { WaitDialogComponent } from './elements/wait-dialog/wait-dialog.componen
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AdminCategoriesComponent } from './components/admin/admin-categories/admin-categories.component';
 import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component';
+import { SelectComponent } from './elements/select/select.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { AdminRegisterComponent } from './components/admin/admin-register/admin-
     WaitDialogComponent,
     AdminCategoriesComponent,
     AdminRegisterComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,

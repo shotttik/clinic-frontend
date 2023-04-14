@@ -1,0 +1,43 @@
+.regTitle {
+  margin: 60px 0 31px 150px;
+}
+.regTitle span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 31px;
+
+  color: #18a4e1;
+}
+
+app-input {
+  display: inline-block;
+}
+
+.regInfoFirst,
+.regInfoSecond {
+  margin-left: 150px;
+}
+
+.regInfoSecond {
+  margin-top: 40px;
+}
+
+.name,
+.lastName,
+.email,
+.activateCode {
+  margin-right: 50px;
+}
+
+.regButton {
+  margin-top: 40px;
+  margin-left: 1461px;
+  display: inline-block;
+  margin-bottom: 125px;
+}
+
+.isAdmin {
+  margin-left: 50px;
+}

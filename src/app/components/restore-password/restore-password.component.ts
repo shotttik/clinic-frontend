@@ -108,7 +108,6 @@ export class RestorePasswordComponent implements OnInit {
     this.confirmPasswordError = '';
   }
   restore() {
-    console.log(this.restoreForm, this.sendCodeForm);
     if (this.restoreForm!.invalid || this.sendCodeForm!.invalid) {
       this.displayErrors(this.restoreForm!);
       this.displayErrors(this.sendCodeForm!);

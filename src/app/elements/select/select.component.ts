@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SelectComponent {
   @Output() selectValueEvent = new EventEmitter<string>();
   @Input() placeholder = '';
+  @Input() error = '';
+
   options = [
     { id: 1, category: 'ორთმოლოგი' },
     { id: 2, category: 'ყბაყური' },

@@ -1,4 +1,5 @@
 .selectContainer {
+  position: relative;
   display: inline-block;
 }
 
@@ -11,4 +12,18 @@ select {
   border: 1px solid #ecf2f8;
   border-radius: 50px;
   padding-left: 20px;
+}
+
+.error {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 20px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: #ff2c52;
 }

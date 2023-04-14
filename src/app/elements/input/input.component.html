@@ -8,6 +8,7 @@
     #ival
     [(ngModel)]="value"
     (change)="valueChanged(ival.value)"
+    [disabled]="disabled"
   />
 
   <div class="showPasswordIcon" *ngIf="type == 'password'" (click)="password()">

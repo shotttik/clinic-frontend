@@ -16,11 +16,13 @@ app-input {
 }
 
 .regInfoFirst,
-.regInfoSecond {
+.regInfoSecond,
+.regInfoThird {
   margin-left: 150px;
 }
 
-.regInfoSecond {
+.regInfoSecond,
+.regInfoThird {
   margin-top: 40px;
 }
 
@@ -42,7 +44,7 @@ app-input {
   margin-left: 50px;
 }
 
-app-file-upload {
+.imageUpload {
   display: inline-block;
   margin-left: 50px;
   vertical-align: bottom;

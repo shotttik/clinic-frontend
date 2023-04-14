@@ -1,5 +1,6 @@
 .fileUploadContainer {
   position: relative;
+  width: 440px;
 }
 
 input[type="file"] {

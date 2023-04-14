@@ -16,6 +16,8 @@ export class FileUploadComponent implements OnInit {
   form: FormGroup | any;
   @Input() label = '';
   @Input() iconName = '';
+  @Input() accept = '';
+  @Input() name = '';
   @Output() fileValueEvent = new EventEmitter<File>();
   fileName: string = '';
 

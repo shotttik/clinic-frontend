@@ -160,6 +160,10 @@ export class AdminRegisterComponent implements OnInit {
     this.createDoctorForm!.controls['image'].setValue(value);
     return value;
   }
+  setDocumentValue(value: any) {
+    this.createDoctorForm!.controls['document'].setValue(value);
+    return value;
+  }
   displayErrors(form: FormGroup) {
     const errors = this.authService.getFormValidationErrors(form);
     errors.forEach((e) => {

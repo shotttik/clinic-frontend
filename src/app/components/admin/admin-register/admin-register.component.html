@@ -65,9 +65,24 @@
       [error]="categoryError"
     ></app-select>
     <app-file-upload
+      class="imageUpload"
+      *ngIf="getRegisterType() == 'doctor'"
       label="ფოტოსურათი"
       iconName="imageUpload"
       (fileValueEvent)="setImageValue($event)"
+      accept="image/*"
+      name="image-upload"
+    ></app-file-upload>
+  </div>
+  <div class="regInfoThird" *ngIf="getRegisterType() == 'doctor'">
+    <app-file-upload
+      class="docUpload"
+      label="CV"
+      iconName="docUpload"
+      accept="application/pdf"
+      name="pdf-upload"
+      accept="application/pdf"
+      (fileValueEvent)="setDocumentValue($event)"
     ></app-file-upload>
   </div>
   <app-button

@@ -13,7 +13,6 @@
     <app-input
       class="email"
       type="email"
-      svgName="mail-right-arrow"
       label="Email"
       for="email"
       #emailInput
@@ -40,7 +39,7 @@
       (inputValueEvent)="setLastNameValue($event)"
     ></app-input>
     <app-input
-      *ngIf="registerType != 'doctor'"
+      *ngIf="getRegisterType() != 'doctor'"
       class="password"
       type="password"
       placeholder="( მინიმუმ 8 სიმბოლო : @ 7 , )"
@@ -51,7 +50,7 @@
       (inputValueEvent)="setPasswordValue($event)"
     ></app-input>
     <app-input
-      *ngIf="registerType == 'admin'"
+      *ngIf="getRegisterType() == 'admin'"
       class="isAdmin"
       placeholder="ადმინისტრატორის სტატუსი არჩეულია"
       label="ადმინისტრატორი"
@@ -60,7 +59,7 @@
       #isAdminInput
     ></app-input>
     <app-select
-      *ngIf="registerType == 'doctor'"
+      *ngIf="getRegisterType() == 'doctor'"
       (selectValueEvent)="setSelectValue($event)"
       placeholder="აირჩიე კატეგორია"
       [error]="categoryError"

@@ -16,7 +16,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-register.component.css'],
 })
 export class AdminRegisterComponent implements OnInit {
-  @Input() registerType: string = '';
   createUserForm: FormGroup | undefined;
   createDoctorForm: FormGroup | undefined;
   firstNameError = '';
@@ -53,11 +52,7 @@ export class AdminRegisterComponent implements OnInit {
         Validators.minLength(8),
         Validators.pattern('^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\\W).+$'),
       ]),
-      isAdmin: new FormControl(false, [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern('^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\\W).+$'),
-      ]),
+      isAdmin: new FormControl(false, [Validators.required]),
     });
     this.createDoctorForm = this.formBuilder.group({
       category: new FormControl('', [Validators.required]),
@@ -65,10 +60,13 @@ export class AdminRegisterComponent implements OnInit {
       document: new FormControl(''),
     });
   }
-
+  getRegisterType(): string {
+    const routeParams = this.route.snapshot.paramMap;
+    return String(routeParams.get('registerType'));
+  }
   registerUser() {
     if (
-      this.registerType == 'doctor' &&
+      this.getRegisterType() == 'doctor' &&
       this.createDoctorForm?.invalid &&
       this.createUserForm?.invalid
     ) {
@@ -80,8 +78,9 @@ export class AdminRegisterComponent implements OnInit {
       this.displayErrors(this.createUserForm);
       return;
     }
-    if (this.registerType == 'doctor') {
+    if (this.getRegisterType() == 'doctor') {
       this.createUserForm!.removeControl('password');
+      this.createUserForm!.removeControl('isAdmin');
       this.apiServices
         .createDoctor({
           ...this.createUserForm!.value,
@@ -104,6 +103,10 @@ export class AdminRegisterComponent implements OnInit {
           },
         });
       return;
+    }
+
+    if (this.getRegisterType() == 'admin') {
+      this.createUserForm!.controls['isAdmin'].setValue(true);
     }
     this.apiServices.createUser(this.createUserForm!.value).subscribe({
       next: (response: any) => {

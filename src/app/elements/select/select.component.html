@@ -1,0 +1,16 @@
+<div class="selectContainer">
+  <select
+    [(ngModel)]="selectedOption"
+    (ngModelChange)="valueChanged(selectedOption)"
+  >
+    <option value="" disabled selected>{{ placeholder }}</option>
+
+    <option
+      *ngFor="let option of options"
+      [value]="option.id"
+      [attr.title]="option.category"
+    >
+      {{ option.category }}
+    </option>
+  </select>
+</div>

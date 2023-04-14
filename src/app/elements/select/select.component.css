@@ -1,0 +1,14 @@
+.selectContainer {
+  display: inline-block;
+}
+
+select {
+  width: 440px;
+  height: 50px;
+  background: #ffffff;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  border: 1px solid #ecf2f8;
+  border-radius: 50px;
+  padding-left: 20px;
+}

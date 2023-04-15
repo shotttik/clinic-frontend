@@ -11,6 +11,7 @@ export class ApiService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
+      'Content-Disposition': 'multipart/form-data',
     }),
   };
   private baseUrl = 'https://localhost:7039';
@@ -46,5 +47,12 @@ export class ApiService {
 
   generateBackPath(path: string) {
     return this.baseUrl + '\\' + path;
+  }
+
+  uploadFile(file: File) {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    let url = this.baseUrl + '/upload';
+    return this.http.post(url, formData);
   }
 }

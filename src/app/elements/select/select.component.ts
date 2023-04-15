@@ -6,16 +6,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./select.component.css'],
 })
 export class SelectComponent {
-  @Output() selectValueEvent = new EventEmitter<string>();
+  @Output() selectValueEvent = new EventEmitter<number>();
   @Input() placeholder = '';
   @Input() error = '';
 
   options = [
-    { id: 1, category: 'ორთმოლოგი' },
-    { id: 2, category: 'ყბაყური' },
+    { id: 4, category: 'ყბაყური' },
+    { id: 5, category: 'სტომატოლოგი' },
   ];
-  selectedOption: string = '';
-  valueChanged(v: string) {
+  selectedOption: number = 0;
+  valueChanged(v: number) {
     this.selectValueEvent.emit(v);
   }
 }

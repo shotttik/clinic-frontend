@@ -30,7 +30,7 @@ export class FileUploadComponent implements OnInit {
   }
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    this.fileName = file.name;
+    file ? (this.fileName = file.name) : (this.fileName = '');
     this.fileValueEvent.emit(file);
   }
 }

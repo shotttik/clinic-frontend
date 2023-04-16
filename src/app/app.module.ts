@@ -36,6 +36,7 @@ import { AdminCategoriesComponent } from './components/admin/admin-categories/ad
 import { AdminRegisterComponent } from './components/admin/admin-register/admin-register.component';
 import { SelectComponent } from './elements/select/select.component';
 import { FileUploadComponent } from './elements/file-upload/file-upload.component';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +77,7 @@ import { FileUploadComponent } from './elements/file-upload/file-upload.componen
     ReactiveFormsModule,
     //primeng
     ToastModule,
+    TableModule,
     //angularMat
     MatProgressSpinnerModule,
   ],

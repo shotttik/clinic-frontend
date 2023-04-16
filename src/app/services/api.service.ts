@@ -55,4 +55,15 @@ export class ApiService {
     let url = this.baseUrl + '/upload';
     return this.http.post(url, formData);
   }
+
+  getCategories(doctors: boolean = false) {
+    let url = this.baseUrl + '/categories';
+    const params = { withDoctors: doctors };
+    return this.http.get(url, { params });
+  }
+
+  deleteCategory(id: number) {
+    let url = this.baseUrl + `/deleteCategory/${id}`;
+    return this.http.post(url, {});
+  }
 }

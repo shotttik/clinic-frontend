@@ -1,0 +1,12 @@
+.productsCard {
+  margin: 0 auto;
+  width: 1000px;
+}
+.card .deleteIcon {
+  cursor: pointer;
+  display: block;
+  float: right;
+}
+.card .deleteIcon:hover {
+  color: red;
+}

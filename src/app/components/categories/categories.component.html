@@ -2,12 +2,12 @@
   <div class="categoriesTitle"><span>კატეგორიები</span></div>
   <div class="categoriesTitleLine"></div>
   <div class="categoryItems">
-    <div class="categoryItem" *ngFor="let item of categories">
+    <div class="categoryItem" *ngFor="let category of categories">
       <div class="numberInCategory">
-        <span>({{ item.value }})</span>
+        <span>({{ category.doctorsCount }})</span>
       </div>
       <div class="categoryItemTitle">
-        <span>{{ item.category }}</span>
+        <span>{{ category.name }}</span>
       </div>
       <app-svg-icon name="arrow-back-ios-rounded"></app-svg-icon>
     </div>

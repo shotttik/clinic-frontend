@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryWithDoctor } from 'src/app/interfaces/Category';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-categories',
@@ -6,28 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent implements OnInit {
-  categories = [
-    {
-      category: 'ანდროლოგი',
-      value: 14,
-    },
-    {
-      category: 'ანესთეზოლოგი',
-      value: 61,
-    },
-    {
-      category: 'კოსმეტოლოგი',
-      value: 467,
-    },
-    {
-      category: 'ლაბორანტი',
-      value: 43,
-    },
-    {
-      category: 'პედიატრი',
-      value: 8,
-    },
-  ];
-  constructor() {}
-  ngOnInit(): void {}
+  categories: CategoryWithDoctor[] = [];
+
+  constructor(private apiService: ApiService) {}
+  ngOnInit(): void {
+    this.apiService.getCategories(true).subscribe({
+      next: (response: any) => {
+        this.categories = response['$values'];
+      },
+      error: (err) => {
+        err;
+      },
+    });
+  }
 }

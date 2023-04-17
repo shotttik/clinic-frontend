@@ -59,6 +59,7 @@
       #isAdminInput
     ></app-input>
     <app-select
+      [options]="categories"
       *ngIf="getRegisterType() == 'doctor'"
       (selectValueEvent)="setSelectValue($event)"
       placeholder="აირჩიე კატეგორია"

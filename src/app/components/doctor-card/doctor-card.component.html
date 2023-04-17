@@ -5,12 +5,14 @@
       <span>{{ spaceInNumbers(doctor.views) }}</span>
     </div>
   </div>
-  <div class="profileImgContainer"><img [src]="doctor.image" /></div>
+  <div class="profileImgContainer">
+    <img [src]="getImagePath(doctor.image)" />
+  </div>
   <div class="fullNameContainer">
     <span>{{ doctor.firstName }} {{ doctor.lastName }}</span>
   </div>
   <div class="medCategoryContainer">
-    <span>{{ doctor.category }}</span>
+    <span>{{ doctor.category.name }}</span>
   </div>
   <div class="reviewStars">
     <app-svg-icon

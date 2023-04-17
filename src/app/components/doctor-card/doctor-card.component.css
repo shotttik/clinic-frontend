@@ -42,6 +42,9 @@
 .profileImgContainer {
   margin-left: 117px;
 }
+.profileImgContainer img {
+  border-radius: 50%;
+}
 
 .fullNameContainer {
   margin-top: 15px;

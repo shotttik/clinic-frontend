@@ -1,3 +1,5 @@
+import { Category } from './Category';
+
 export interface Doctor {
   id: number;
   firstName: string;
@@ -7,5 +9,5 @@ export interface Doctor {
   pid: string;
   image: string | null;
   document: string | null;
-  categoryId: number;
+  category: Category;
 }

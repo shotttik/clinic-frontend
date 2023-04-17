@@ -14,6 +14,10 @@
   margin-left: 48px;
 }
 
+.profileimg {
+  border-radius: 50%;
+}
+
 .doctorMainInfoContainer {
   display: inline-block;
   vertical-align: top;

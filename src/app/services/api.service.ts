@@ -66,4 +66,9 @@ export class ApiService {
     let url = this.baseUrl + `/deleteCategory/${id}`;
     return this.http.post(url, {});
   }
+
+  getDoctors() {
+    let url = this.baseUrl + '/getDoctors';
+    return this.http.get(url);
+  }
 }

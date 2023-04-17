@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Doctor } from 'src/app/interfaces/Doctor';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-doctors',
@@ -6,40 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctors.component.css'],
 })
 export class DoctorsComponent implements OnInit {
-  doctorItems = [
-    {
-      ID: '1',
-      firstName: 'გიორგი',
-      lastName: 'ხორავა',
-      category: 'კარდიოლოგი',
-      views: 321050,
-      image: 'assets/images/medicImage1.png',
-    },
-    {
-      ID: '4',
-      firstName: 'გიორგი',
-      lastName: 'ხორავა',
-      category: 'კარდიოლოგი',
-      views: 321050,
-      image: 'assets/images/medicImage2.png',
-    },
-    {
-      ID: '2',
-      firstName: 'გიორგი',
-      lastName: 'ხორავა',
-      category: 'კარდიოლოგი',
-      views: 321050,
-      image: 'assets/images/medicImage3.png',
-    },
-    {
-      ID: '3',
-      firstName: 'გიორგი',
-      lastName: 'ხორავა',
-      category: 'კარდიოლოგი',
-      views: 321050,
-      image: 'assets/images/medicImage1.png',
-    },
-  ];
-  constructor() {}
-  ngOnInit(): void {}
+  doctors: Doctor[] = [];
+
+  constructor(private apiService: ApiService) {}
+  ngOnInit(): void {
+    this.apiService.getDoctors().subscribe({
+      next: (response: any) => {
+        this.doctors = response;
+      },
+      error: (err) => {},
+    });
+  }
 }

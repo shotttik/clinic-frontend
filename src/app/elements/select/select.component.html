@@ -11,9 +11,9 @@
     <option
       *ngFor="let option of options"
       [value]="option.id"
-      [attr.title]="option.category"
+      [attr.title]="option.name"
     >
-      {{ option.category }}
+      {{ option.name }}
     </option>
   </select>
   <p class="error" *ngIf="error">{{ error }}</p>

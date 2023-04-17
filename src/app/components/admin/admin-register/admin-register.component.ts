@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Category } from 'src/app/interfaces/Category';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -24,6 +25,7 @@ export class AdminRegisterComponent implements OnInit {
   pidError = '';
   passwordError = '';
   categoryError = '';
+  categories: Category[] = [];
   documentFile: File | undefined;
   imageFile: File | undefined;
   constructor(
@@ -60,6 +62,15 @@ export class AdminRegisterComponent implements OnInit {
       categoryId: new FormControl(null, [Validators.required]),
       document: new FormControl(null),
       image: new FormControl(null),
+    });
+
+    this.apiServices.getCategories().subscribe({
+      next: (response: any) => {
+        this.categories = response;
+      },
+      error: (err) => {
+        err;
+      },
     });
   }
   getRegisterType(): string {

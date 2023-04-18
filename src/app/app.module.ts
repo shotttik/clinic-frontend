@@ -37,6 +37,7 @@ import { AdminRegisterComponent } from './components/admin/admin-register/admin-
 import { SelectComponent } from './elements/select/select.component';
 import { FileUploadComponent } from './elements/file-upload/file-upload.component';
 import { TableModule } from 'primeng/table';
+import { CategoryDetailComponent } from './pages/category-detail/category-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import { TableModule } from 'primeng/table';
     AdminRegisterComponent,
     SelectComponent,
     FileUploadComponent,
+    CategoryDetailComponent,
   ],
   imports: [
     BrowserModule,

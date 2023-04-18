@@ -1,0 +1,9 @@
+<app-categories (categoryIdChanged)="setCategoryId($event)"></app-categories>
+<div class="cardsContainer">
+  <div class="cardsGrid">
+    <app-doctor-card
+      *ngFor="let doctor of doctors"
+      [doctor]="doctor"
+    ></app-doctor-card>
+  </div>
+</div>

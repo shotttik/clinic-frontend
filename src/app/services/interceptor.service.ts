@@ -22,11 +22,6 @@ export class InterceptorService implements HttpInterceptor {
     if (token) {
       req = req.clone({ setHeaders: { Authorization: 'Bearer ' + token } });
     }
-    const dialogRef = this.toolsService.openWaitDialog();
-    return next.handle(req).pipe(
-      finalize(() => {
-        dialogRef.close();
-      })
-    );
+    return next.handle(req);
   }
 }

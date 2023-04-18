@@ -7,6 +7,8 @@ import { DoctorsComponent } from './pages/doctors/doctors.component';
 import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 import { RoleGuard } from './services/role.guard';
 import { LoggedInGuardGuard } from './services/logged-in-guard.guard';
+import { AuthGuard } from './services/auth.guard';
+import { CategoryDetailComponent } from './pages/category-detail/category-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' },
@@ -16,10 +18,11 @@ const routes: Routes = [
     canActivate: [LoggedInGuardGuard],
   },
   { path: 'doctor/:doctorId', component: ReservationComponent },
+  { path: 'category/:categoryId', component: CategoryDetailComponent },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [RoleGuard],
+    canActivate: [AuthGuard],
   },
   { path: 'doctors', component: DoctorsComponent },
   {

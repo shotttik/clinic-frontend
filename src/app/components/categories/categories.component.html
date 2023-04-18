@@ -2,7 +2,12 @@
   <div class="categoriesTitle"><span>კატეგორიები</span></div>
   <div class="categoriesTitleLine"></div>
   <div class="categoryItems">
-    <div class="categoryItem" *ngFor="let category of categories">
+    <div
+      class="categoryItem"
+      *ngFor="let category of categories"
+      (click)="goDetailPage(category.id)"
+      [ngClass]="{ active: IsCurrentPage(category.id) }"
+    >
       <div class="numberInCategory">
         <span>({{ category.doctorsCount }})</span>
       </div>

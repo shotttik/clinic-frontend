@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ToolsService } from './tools.service';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +20,30 @@ export class ApiService {
 
   registerUser(data: FormGroup) {
     let url = this.baseUrl + '/register';
-    return this.http.post(url, data, this.httpOptions);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
   createUser(data: FormGroup) {
     let url = this.baseUrl + '/createUser';
-    return this.http.post(url, data, this.httpOptions);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
   createDoctor(data: FormGroup) {
     let url = this.baseUrl + '/createDoctor';
-    return this.http.post(url, data, this.httpOptions);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
 
   loginUser(data: FormGroup) {
@@ -38,7 +53,12 @@ export class ApiService {
 
   createRestoreCode(data: FormGroup) {
     let url = this.baseUrl + '/createRestoreCode';
-    return this.http.post(url, data, this.httpOptions);
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
   resetPassword(data: FormGroup) {
     let url = this.baseUrl + '/resetPassword';
@@ -69,6 +89,10 @@ export class ApiService {
 
   getDoctors() {
     let url = this.baseUrl + '/getDoctors';
+    return this.http.get(url);
+  }
+  getDoctorsByCategory(id: number) {
+    let url = this.baseUrl + `/getDoctors/category/${id}`;
     return this.http.get(url);
   }
 }

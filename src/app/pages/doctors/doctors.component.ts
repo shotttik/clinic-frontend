@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DoctorsComponent implements OnInit {
   doctors: Doctor[] = [];
-
+  showAll: boolean = false;
   constructor(private apiService: ApiService) {}
   ngOnInit(): void {
     this.apiService.getDoctors().subscribe({

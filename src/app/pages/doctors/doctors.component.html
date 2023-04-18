@@ -5,8 +5,12 @@
 <div class="cardsContainer">
   <div class="cardsGrid">
     <app-doctor-card
-      *ngFor="let item of doctors"
+      *ngFor="let item of showAll ? doctors : doctors.slice(0, 6)"
       [doctor]="item"
     ></app-doctor-card>
   </div>
+</div>
+<div class="showAllContainer" *ngIf="!showAll">
+  <span (click)="showAll = true">სრულად ნახვა</span>
+  <div class="line"></div>
 </div>

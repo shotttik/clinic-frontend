@@ -15,3 +15,32 @@ app-categories {
   column-gap: 20px;
   row-gap: 20px;
 }
+.showAllContainer {
+  position: relative;
+  display: inline-block;
+  top: 266px;
+  right: 99px;
+}
+.showAllContainer span {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: #053354;
+}
+
+.showAllContainer .line {
+  width: 80px;
+  height: 0px;
+  border: 1px solid #18a4e1;
+  margin-top: 5px;
+  margin-left: 22px;
+}
+
+.showAllContainer:hover span {
+  cursor: pointer;
+  color: #048ae9;
+}

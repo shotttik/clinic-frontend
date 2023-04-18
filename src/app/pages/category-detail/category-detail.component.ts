@@ -26,7 +26,6 @@ export class CategoryDetailComponent implements OnInit {
   getDoctors() {
     this.apiService.getDoctorsByCategory(this.categoryId).subscribe({
       next: (response: any) => {
-        console.log(response);
         this.doctors = response;
       },
       error: (err) => {
@@ -42,6 +41,9 @@ export class CategoryDetailComponent implements OnInit {
     });
   }
   setCategoryId(value: any) {
+    if (this.categoryId == value) {
+      return;
+    }
     this.categoryId = value;
     this.getDoctors();
   }

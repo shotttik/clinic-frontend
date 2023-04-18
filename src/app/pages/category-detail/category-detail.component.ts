@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { SearchComponent } from 'src/app/components/search/search.component';
 import { Doctor } from 'src/app/interfaces/Doctor';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -12,10 +13,12 @@ import { ApiService } from 'src/app/services/api.service';
 export class CategoryDetailComponent implements OnInit {
   doctors: Doctor[] = [];
   categoryId: number;
+  @ViewChild(SearchComponent) search: SearchComponent | undefined;
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {
     this.categoryId = Number(this.route.snapshot.paramMap.get('categoryId'));
   }
@@ -24,6 +27,7 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   getDoctors() {
+    console.log(this.categoryId);
     this.apiService.getDoctorsByCategory(this.categoryId).subscribe({
       next: (response: any) => {
         this.doctors = response;
@@ -46,5 +50,10 @@ export class CategoryDetailComponent implements OnInit {
     }
     this.categoryId = value;
     this.getDoctors();
+  }
+  setDoctorsValue(val: any) {
+    this.doctors = val;
+    this.router.navigate(['/category/0']);
+    this.categoryId = 0;
   }
 }

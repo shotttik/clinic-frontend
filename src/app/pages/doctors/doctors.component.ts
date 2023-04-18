@@ -19,4 +19,8 @@ export class DoctorsComponent implements OnInit {
       error: (err) => {},
     });
   }
+
+  setDoctorsValue(val: any) {
+    this.doctors = val;
+  }
 }

@@ -23,7 +23,7 @@
     placeholder="მოძებნე ექიმი სპეციალობით"
     (inputValueEvent)="setMedSearchBySpec($event)"
   ></app-input>
-  <div class="SearchIconCircle centerIcon">
+  <div class="SearchIconCircle centerIcon" (click)="search()">
     <app-svg-icon name="ri_search-line"></app-svg-icon>
   </div>
 </div>

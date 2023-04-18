@@ -44,6 +44,8 @@
   height: 50px;
   background: #053354;
   border-radius: 50%;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .searchByName {
@@ -53,8 +55,4 @@
 .searchBySpec {
   margin-left: 20px;
   display: inline-block;
-}
-
-.SearchIconCircle {
-  margin-left: 20px;
 }

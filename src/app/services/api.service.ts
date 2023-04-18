@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Form, FormGroup } from '@angular/forms';
 import { ToolsService } from './tools.service';
 import { finalize, tap } from 'rxjs';
+import { Search } from '../interfaces/Search';
 
 @Injectable({
   providedIn: 'root',
@@ -94,5 +95,15 @@ export class ApiService {
   getDoctorsByCategory(id: number) {
     let url = this.baseUrl + `/getDoctors/category/${id}`;
     return this.http.get(url);
+  }
+
+  search(searchValue: Search) {
+    let url = this.baseUrl + '/search';
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, searchValue, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
   }
 }

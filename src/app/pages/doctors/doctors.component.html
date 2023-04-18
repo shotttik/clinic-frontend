@@ -1,7 +1,7 @@
+<app-search (searchResultEvent)="setDoctorsValue($event)"></app-search>
 <app-slider></app-slider>
 
 <app-categories></app-categories>
-
 <div class="cardsContainer">
   <div class="cardsGrid">
     <app-doctor-card
@@ -10,7 +10,7 @@
     ></app-doctor-card>
   </div>
 </div>
-<div class="showAllContainer" *ngIf="!showAll">
+<div class="showAllContainer" *ngIf="!showAll && doctors.length > 6">
   <span (click)="showAll = true">სრულად ნახვა</span>
   <div class="line"></div>
 </div>

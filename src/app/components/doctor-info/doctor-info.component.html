@@ -1,13 +1,13 @@
-<div class="doctorInfoContainer">
+<div class="doctorInfoContainer" *ngIf="doctor">
   <div class="doctorProfileImg">
-    <img class="profileimg" [src]="doctor.image" />
+    <img class="profileimg" [src]="getImagePath(doctor.image)" />
   </div>
   <div class="doctorMainInfoContainer">
     <div class="doctorFullName">
       <span>{{ doctor.firstName }} {{ doctor.lastName }}</span>
     </div>
     <div class="doctorCategory">
-      <span>{{ doctor.category }}</span>
+      <span>{{ doctor.category.name }}</span>
     </div>
     <div class="doctorReview">
       <app-svg-icon

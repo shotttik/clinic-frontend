@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Doctor } from 'src/app/interfaces/Doctor';
 import { ApiService } from 'src/app/services/api.service';
 import { ToolsService } from 'src/app/services/tools.service';
 
@@ -8,11 +10,12 @@ import { ToolsService } from 'src/app/services/tools.service';
   styleUrls: ['./doctor-card.component.css'],
 })
 export class DoctorCardComponent implements OnInit {
-  @Input() doctor: any;
+  @Input() doctor: Doctor | any;
 
   constructor(
     private toolService: ToolsService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {}
   ngOnInit(): void {}
 
@@ -22,5 +25,11 @@ export class DoctorCardComponent implements OnInit {
 
   getImagePath(path: string) {
     return this.apiService.generateBackPath(path);
+  }
+
+  goDetailPage() {
+    this.router.navigate([
+      `/category/${this.doctor.category.id}/doctor/${this.doctor.id}`,
+    ]);
   }
 }

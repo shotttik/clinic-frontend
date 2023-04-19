@@ -13,7 +13,6 @@ import { ApiService } from 'src/app/services/api.service';
 export class CategoryDetailComponent implements OnInit {
   doctors: Doctor[] = [];
   categoryId: number;
-  @ViewChild(SearchComponent) search: SearchComponent | undefined;
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
@@ -27,7 +26,6 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   getDoctors() {
-    console.log(this.categoryId);
     this.apiService.getDoctorsByCategory(this.categoryId).subscribe({
       next: (response: any) => {
         this.doctors = response;

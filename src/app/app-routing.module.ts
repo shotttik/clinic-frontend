@@ -17,7 +17,10 @@ const routes: Routes = [
     component: RegistrationComponent,
     canActivate: [LoggedInGuardGuard],
   },
-  { path: 'doctor/:doctorId', component: ReservationComponent },
+  {
+    path: 'category/:categoryId/doctor/:doctorId',
+    component: ReservationComponent,
+  },
   { path: 'category/:categoryId', component: CategoryDetailComponent },
   {
     path: 'profile',

@@ -106,4 +106,8 @@ export class ApiService {
       })
     );
   }
+  getDoctor(id: number) {
+    let url = this.baseUrl + `/getDoctor/${id}`;
+    return this.http.get(url);
+  }
 }

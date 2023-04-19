@@ -33,6 +33,6 @@ export class CategoriesComponent implements OnInit {
     this.categoryIdChanged.emit(id);
   }
   IsCurrentPage(id: number): boolean {
-    return this.router.url == `/category/${id}`;
+    return this.router.url.includes(`/category/${id}`);
   }
 }

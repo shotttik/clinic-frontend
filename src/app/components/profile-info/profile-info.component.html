@@ -1,35 +1,38 @@
-<div class="profileContainer">
+<div class="profileContainer" *ngIf="user">
   <div class="profileImage">
-    <img class="profileimg" src="{{ user.image }}" />
+    <img class="profileimg" src="assets/images/profileImg.png" />
   </div>
   <div class="userFullName">
-    <span>{{ user.firstName }} {{ user.lastName }}</span>
+    <span>{{ user.FirstName }} {{ user.LastName }}</span>
   </div>
   <div class="userStatus infoText">
-    <span class="mainSpan">{{ user.status }}<br /></span>
-    <span class="secondSpan" *ngIf="user.status == 'ექიმი'"
+    <span class="mainSpan">მომხმარებელი<br /></span>
+    <!-- <span class="mainSpan">{{ user.status }}<br /></span> -->
+    <!-- <span class="secondSpan" *ngIf="user.status == 'ექიმი'"
       >{{ user.category }}<br
-    /></span>
-    <span class="secondSpan" *ngIf="user.status == 'ექიმი'">
+    /></span> -->
+    <!-- <span class="secondSpan" *ngIf="user.status == 'ექიმი'">
       <app-svg-icon
         *ngFor="let i of [1, 2, 3, 4, 5]"
         name="material-symbols_star-rounded"
       ></app-svg-icon>
-    </span>
+    </span> -->
   </div>
   <div class="userPid infoText">
     <span class="mainSpan">პირადი ნომერი :<br /></span>
-    <span class="secondSpan">{{ user.pid }}</span>
+    <span class="secondSpan">{{ user.Pid }}</span>
   </div>
   <div class="userEmail infoText">
     <span class="mainSpan">Email :<br /></span>
-    <span class="secondSpan">{{ user.email }}</span>
+    <span class="secondSpan">{{ user.Email }}</span>
   </div>
-  <div class="changePassword infoText" *ngIf="user.status == 'მომხმარებელი'">
+  <!-- <div class="changePassword infoText" *ngIf="user.status == 'მომხმარებელი'"> -->
+  <div class="changePassword infoText">
     <span>პაროლის შეცვლა</span>
   </div>
   <div class="userReservations infoText">
     <span class="mainSpan">ჩემი ჯავშანი :<br /></span>
-    <span class="secondSpan">({{ user.reservations }})</span>
+    <!-- <span class="secondSpan">({{ user.Reservations }})</span> -->
+    <span class="secondSpan">(3)</span>
   </div>
 </div>

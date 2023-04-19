@@ -14,11 +14,7 @@
     </div>
     <div class="navLine"></div>
   </div>
-  <div
-    class="authedContainer"
-    (click)="IsAdmin() ? changePage('/admin') : changePage('/profile')"
-    *ngIf="IsAuthenticated()"
-  >
+  <div class="authedContainer" (click)="goProfile()" *ngIf="IsAuthenticated()">
     <span>{{ getUserEmail() }}</span>
   </div>
   <div class="authContainer" *ngIf="!IsAuthenticated()">
@@ -39,6 +35,6 @@
     </div>
   </div>
   <div class="languageContainer">
-    <span>ENG</span>
+    <span (click)="LogOut()">ENG</span>
   </div>
 </header>

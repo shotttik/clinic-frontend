@@ -4,8 +4,5 @@ export interface User {
   LastName: string;
   Pid: string;
   exp: number;
-  IsAdmin: string;
-  Category: string;
-  image: string;
-  status: string;
+  IsAdmin: boolean;
 }

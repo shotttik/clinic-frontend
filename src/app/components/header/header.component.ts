@@ -63,7 +63,15 @@ export class HeaderComponent implements OnInit {
   getUserEmail() {
     return this.authService.decodeToken().Email;
   }
-  IsAdmin() {
-    return this.authService.decodeToken().IsAdmin;
+
+  LogOut() {
+    localStorage.removeItem('accessToken');
+    this.changePage('/doctors');
+  }
+
+  goProfile() {
+    this.authService.IsAdmin()
+      ? this.changePage('/admin')
+      : this.changePage('/profile');
   }
 }

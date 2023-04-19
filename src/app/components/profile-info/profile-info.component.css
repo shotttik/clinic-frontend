@@ -47,3 +47,9 @@
 .infoText .secondSpan {
   color: rgba(5, 51, 84, 0.3);
 }
+.changePassword span {
+  cursor: pointer;
+}
+.changePassword span:hover {
+  color: #18a4e1;
+}

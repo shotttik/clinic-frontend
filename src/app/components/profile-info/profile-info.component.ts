@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/interfaces/User';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,20 +8,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile-info.component.css'],
 })
 export class ProfileInfoComponent implements OnInit {
-  user = {
-    ID: 1,
-    status: 'მომხმარებელი',
-    firstName: 'სახელი',
-    lastName: 'გვარი',
-    category: '',
-    pid: 24001002040,
-    email: 'momkhmarebeli@gmail.com',
-    reservations: 2,
-    image: 'assets/images/profileImg.png',
-  };
+  user: User | undefined;
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
-    console.log(this.getUserData());
+    this.user = this.getUserData();
   }
   getUserData() {
     return this.authService.decodeToken();

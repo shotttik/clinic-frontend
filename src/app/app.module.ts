@@ -38,6 +38,7 @@ import { SelectComponent } from './elements/select/select.component';
 import { FileUploadComponent } from './elements/file-upload/file-upload.component';
 import { TableModule } from 'primeng/table';
 import { CategoryDetailComponent } from './pages/category-detail/category-detail.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,8 @@ import { CategoryDetailComponent } from './pages/category-detail/category-detail
     BrowserAnimationsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    //calendar
+    FullCalendarModule,
     //primeng
     ToastModule,
     TableModule,

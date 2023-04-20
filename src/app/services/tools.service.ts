@@ -27,4 +27,10 @@ export class ToolsService {
   closeWaitDialog(): void {
     this.dialog;
   }
+
+  addMinutes(dateString: string, minutes: number) {
+    const date = new Date(dateString);
+    date.setMinutes(date.getMinutes() + minutes);
+    return date;
+  }
 }

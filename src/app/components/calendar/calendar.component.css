@@ -1,0 +1,124 @@
+.calendarContentContainer {
+  position: relative;
+}
+.calendar-container {
+  width: 800px; /* set the width to your desired value */
+  /* margin: 0 auto;
+  vertical-align: top;
+  display: inline-block; */
+}
+
+.calendar-container::ng-deep .fc {
+  width: 100%;
+}
+
+.calendar-container::ng-deep td.fc-day-sat {
+  background-color: #fffff5;
+}
+
+.calendar-container::ng-deep td.fc-day-sun {
+  background-color: #fffff5;
+}
+
+.calendar-container::ng-deep .fc-timegrid-slot {
+  height: 70px;
+}
+
+::ng-deep .fc-col-header-cell,
+::ng-deep th.fc-timegrid-axis {
+  background: #ecf2f8 !important;
+}
+
+::ng-deep .fc-event-main {
+  position: relative;
+  background: #dafaee;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+::ng-deep .fc-event-main i {
+  color: #3acf99;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+::ng-deep a.fc-event {
+  border: none;
+}
+
+::ng-deep .eventDeleteButton {
+}
+
+.editButton ::ng-deep .buttonSVG {
+  top: 10px;
+  left: 25px;
+}
+
+.editButton {
+  display: inline-flex;
+  margin-top: 31px;
+  margin-left: 432px;
+}
+
+.eventDeleteButtonContainer {
+  position: absolute;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+
+  right: 6px;
+  top: 4px;
+}
+.eventDeleteButtonContainer:hover {
+  background: #ff93a6;
+}
+
+.eventDeleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.messageContainerNotAuth {
+  top: 50%;
+  left: 300px;
+  z-index: 3;
+  position: absolute;
+  width: 320px;
+  height: 78px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.2);
+  border-radius: 10px;
+}
+
+.title {
+  display: block;
+  margin-left: 32px;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+.mainMessageTitle {
+  margin-top: 18px;
+  color: #ff2c52;
+}
+.secondMessageTitle {
+  color: #053354;
+}
+
+app-custom-prompt {
+  position: absolute;
+  z-index: 3;
+  top: 250px;
+  left: 200px;
+}

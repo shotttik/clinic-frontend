@@ -1,0 +1,31 @@
+<div class="modal">
+  <div class="modal-body">
+    <p class="mainTitle title">გსურთ ვიზიტის დაჯავშნა?</p>
+    <p class="secondTitle title">{{ message }}</p>
+    <textarea
+      type="text"
+      [(ngModel)]="inputText"
+      placeholder="აღწერა..."
+    ></textarea>
+  </div>
+  <div class="modal-footer">
+    <app-button
+      class="btnCancel"
+      (click)="cancel()"
+      value="გაუქმება"
+      width="170px"
+      height="50px"
+      borderRadius="50px"
+      background="#FF93A6"
+    ></app-button>
+    <app-button
+      class="btnConfirm"
+      (click)="confirm()"
+      value="დაჯავშნა"
+      borderRadius="50px"
+      background="#3ACF99"
+      width="170px"
+      height="50px"
+    ></app-button>
+  </div>
+</div>

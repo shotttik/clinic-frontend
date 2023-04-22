@@ -13,4 +13,7 @@ app-profile-info {
 
 app-calendar {
   display: inline-block;
+  vertical-align: top;
+  margin-left: 32px;
+  margin-top: 89px;
 }

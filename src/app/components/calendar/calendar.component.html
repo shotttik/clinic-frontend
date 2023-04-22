@@ -1,7 +1,49 @@
-<full-calendar
-  #calendar
-  [options]="calendarOptions"
-  [deepChangeDetection]="true"
-></full-calendar>
-
-<button (click)="showCalendarEvents()">აბა დააძგაფე</button>
+<div class="calendarContentContainer">
+  <div class="calendar-container">
+    <full-calendar
+      #calendar
+      [options]="calendarOptions"
+      [deepChangeDetection]="true"
+    >
+      <ng-template #eventContent let-arg class="eventTemplate">
+        <!-- <b>{{ arg.timeText }}</b> -->
+        <!-- <i>{{ arg.event.title }}</i> -->
+        <i> ჩემი ჯავშანი</i>
+        <div class="eventDeleteButtonContainer" *ngIf="deleteEvents">
+          <app-svg-icon
+            name="redX"
+            class="eventDeleteButton"
+            (click)="deleteEvent(arg.event.id)"
+          >
+            წაშლა
+          </app-svg-icon>
+        </div>
+      </ng-template>
+    </full-calendar>
+  </div>
+  <app-custom-prompt
+    *ngIf="showPopup"
+    (confirmEvent)="onConfirm($event)"
+    (cancelEvent)="onCancel()"
+  ></app-custom-prompt>
+  <div
+    class="messageContainerNotAuth"
+    *ngIf="!IsAuthenticated()"
+    (click)="changePage('/register')"
+  >
+    <span class="mainMessageTitle title">დასაჯავშნად გთხოვთ გაიაროთ </span>
+    <span class="secondMessageTitle title"> ავტორიზაცია ან რეგისტრაცია.</span>
+  </div>
+  <button (click)="showCalendarEvents()">აბა დააძგაფე</button>
+  <app-button
+    class="editButton"
+    [background]="deleteEvents ? '#FF93A6' : '#ECF2F8'"
+    color="#18A4E1"
+    height="50px"
+    width="230px"
+    iconLeft="edit-svgrepo-com"
+    borderRadius="50px"
+    (click)="showDeleteOnEvents()"
+    value="რედაქტირება"
+  ></app-button>
+</div>

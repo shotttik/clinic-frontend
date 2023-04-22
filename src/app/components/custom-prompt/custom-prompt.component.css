@@ -1,0 +1,55 @@
+.modal {
+  width: 420px;
+  height: 263px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(5, 51, 84, 0.2);
+  border-radius: 10px;
+}
+.modal-body {
+  margin-left: 30px;
+  padding-top: 25px;
+}
+
+textarea {
+  box-sizing: border-box;
+
+  width: 357px;
+  height: 90px;
+  padding-left: 10px;
+  padding-top: 10px;
+
+  border: 1px solid #ecf2f8;
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+  resize: none;
+}
+
+.title {
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.mainTitle {
+  color: #3acf99;
+}
+.secondTitle {
+  padding-top: 5px;
+  color: #053354;
+}
+
+.modal-footer {
+  margin-top: 13px;
+  margin-left: 32px;
+}
+
+app-button {
+  display: inline-block;
+}
+.btnConfirm {
+  margin-left: 10px;
+}

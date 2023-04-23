@@ -1,4 +1,4 @@
-.productsCard {
+.categoryCard {
   margin: 0 auto;
   width: 1000px;
 }
@@ -9,4 +9,15 @@
 }
 .card .deleteIcon:hover {
   color: red;
+}
+
+.categoryCard th {
+  background: #f0faff;
+  font-family: "FiraGO-Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #053354;
 }

@@ -45,7 +45,7 @@ export class CalendarComponent implements AfterViewInit {
   calendarOptions: CalendarOptions;
   calendarApi: Calendar | undefined;
   deleteEvents: boolean = false;
-  dateclickArg!: DateClickArg;
+  dateSelectArg!: DateSelectArg;
 
   //popup
   showPopup: boolean = false;
@@ -97,7 +97,8 @@ export class CalendarComponent implements AfterViewInit {
       selectOverlap: false,
       //event
       selectAllow: this.handleSelectAllow.bind(this),
-      dateClick: this.handleDateClick.bind(this),
+      // dateClick: this.handleDateClick.bind(this),
+      select: this.handleDateClick.bind(this),
       events: this.calendarEvents,
       eventOverlap: false,
       eventMinHeight: 70,
@@ -118,21 +119,38 @@ export class CalendarComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.calendarApi = this.calendarComponent!.getApi();
   }
+  handleDateSelect(selectInfo: DateSelectArg) {
+    console.log(selectInfo);
 
-  handleDateClick(arg: DateClickArg) {
+    const title = prompt('Please enter a new title for your evenat');
+    const calendarApi = selectInfo.view.calendar;
+
+    calendarApi.unselect(); // clear date selection
+
+    if (title) {
+      calendarApi.addEvent({
+        id: uuidv4(),
+        title,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        allDay: selectInfo.allDay,
+      });
+    }
+  }
+  handleDateClick(arg: DateSelectArg) {
     if (
       !this.IsAuthenticated() ||
-      arg.date.getDay() === 0 ||
-      arg.date.getDay() === 6
+      arg.start.getDay() === 0 ||
+      arg.start.getDay() === 6
     ) {
       // prevent default behavior of creating an event
-      arg.jsEvent.preventDefault();
+      arg.jsEvent!.preventDefault();
       return;
     }
 
     this.popupMessage = 'Please enter the title of the event';
     this.showPopup = true;
-    this.dateclickArg = arg;
+    this.dateSelectArg = arg;
   }
 
   handleSelectAllow(selectInfo: DateSpanApi) {
@@ -208,9 +226,9 @@ export class CalendarComponent implements AfterViewInit {
       const newEvent: EventInput = {
         id: uuidv4(),
         title,
-        start: this.dateclickArg.date,
-        end: this.toolService.addMinutes(this.dateclickArg.dateStr, 15),
-        allDay: this.dateclickArg.allDay,
+        start: this.dateSelectArg.start,
+        end: this.dateSelectArg.end,
+        allDay: this.dateSelectArg.allDay,
       };
       this.calendarApi!.addEvent(newEvent);
       const currentEvents: EventInput[] = this.calendarOptions

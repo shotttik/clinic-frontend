@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { Category } from 'src/app/interfaces/Category';
 import { ApiService } from 'src/app/services/api.service';
+import { ConfirmationDialogComponent } from '../../dialog-popup/confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-categories',
@@ -12,7 +14,8 @@ export class AdminCategoriesComponent implements OnInit {
   category_list: Category[] = [];
   constructor(
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public dialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.apiService.getCategories(false).subscribe({
@@ -26,24 +29,36 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   onDelete(category: Category) {
-    this.apiService.deleteCategory(category.id).subscribe({
-      next: (response: any) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'წარმატეუბლი!',
-          detail: 'წაიშალა წარმატებით',
-        });
-        this.category_list = this.category_list.filter(
-          (c) => c.id != category.id
-        );
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: {
+        title: 'წაშლის დასტური',
+        message: 'ნამდვილად გსურთ კატეგორიის წაშლა?',
       },
-      error: (err) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'შეცდომა!',
-          detail: err.error,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.apiService.deleteCategory(category.id).subscribe({
+          next: (response: any) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'წარმატეუბლი!',
+              detail: 'წაიშალა წარმატებით',
+            });
+            this.category_list = this.category_list.filter(
+              (c) => c.id != category.id
+            );
+          },
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'შეცდომა!',
+              detail: err.error,
+            });
+          },
         });
-      },
+      }
     });
   }
 }

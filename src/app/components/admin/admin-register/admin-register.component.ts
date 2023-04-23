@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  RequiredValidator,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,8 +18,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./admin-register.component.css'],
 })
 export class AdminRegisterComponent implements OnInit {
-  createUserForm: FormGroup | undefined;
-  createDoctorForm: FormGroup | undefined;
+  createUserForm!: FormGroup;
   firstNameError = '';
   lastNameError = '';
   emailError = '';
@@ -56,10 +56,8 @@ export class AdminRegisterComponent implements OnInit {
         Validators.minLength(8),
         Validators.pattern('^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*\\W).+$'),
       ]),
-      isAdmin: new FormControl(false, [Validators.required]),
-    });
-    this.createDoctorForm = this.formBuilder.group({
-      categoryId: new FormControl(null, [Validators.required]),
+      role: new FormControl(0, [Validators.required]),
+      categoryId: new FormControl(null),
       document: new FormControl(null),
       image: new FormControl(null),
     });
@@ -78,24 +76,22 @@ export class AdminRegisterComponent implements OnInit {
     return String(routeParams.get('registerType'));
   }
   registerUser() {
-    if (this.getRegisterType() == 'doctor') {
-      this.createUserForm!.removeControl('password');
-      this.createUserForm!.removeControl('isAdmin');
-      if (this.createDoctorForm?.invalid || this.createUserForm?.invalid) {
-        this.displayErrors(this.createDoctorForm!);
-        this.displayErrors(this.createUserForm!);
-        return;
-      }
-    }
-    if (this.getRegisterType() != 'doctor' && this.createUserForm?.invalid) {
-      this.displayErrors(this.createUserForm!);
+    if (this.createUserForm?.invalid) {
+      this.displayErrors();
       return;
     }
     if (this.getRegisterType() == 'doctor') {
+      if (this.createUserForm.controls['categoryId'].value == null) {
+        this.categoryError = 'ეს ველი აუცილებელია';
+        return;
+      } else {
+        this.categoryError = '';
+      }
+      this.createUserForm.controls['role'].setValue(2);
       if (this.imageFile) {
         this.apiServices.uploadFile(this.imageFile).subscribe({
           next: (response: any) => {
-            this.createDoctorForm!.controls['image'].setValue(response.dbPath);
+            this.createUserForm!.controls['image'].setValue(response.dbPath);
           },
           error: (err) => console.log(err),
         });
@@ -103,41 +99,35 @@ export class AdminRegisterComponent implements OnInit {
       if (this.documentFile) {
         this.apiServices.uploadFile(this.documentFile).subscribe({
           next: (response: any) => {
-            this.createDoctorForm!.controls['document'].setValue(
-              response.dbPath
-            );
+            this.createUserForm!.controls['document'].setValue(response.dbPath);
           },
           error: (err) => console.log(err),
         });
       }
       setTimeout(() => {
-        this.apiServices
-          .createDoctor({
-            ...this.createUserForm!.value,
-            ...this.createDoctorForm!.value,
-          })
-          .subscribe({
-            next: (response: any) => {
-              this.messageService.add({
-                severity: 'success',
-                summary: 'წამატებული!',
-                detail: 'მომხმარებელი წარმატებით დარეგისტრირდა.',
-              });
-            },
-            error: (err) => {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'ყურადღება!',
-                detail: err.error,
-              });
-            },
-          });
+        this.apiServices.createDoctor(this.createUserForm!.value).subscribe({
+          next: (response: any) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'წამატებული!',
+              detail: 'მომხმარებელი წარმატებით დარეგისტრირდა.',
+            });
+          },
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'ყურადღება!',
+              detail: err.error,
+            });
+          },
+        });
         return;
       }, 500);
     } else {
       if (this.getRegisterType() == 'admin') {
-        this.createUserForm!.controls['isAdmin'].setValue(true);
+        this.createUserForm!.controls['role'].setValue(1);
       }
+      console.log(this.createUserForm!.value);
       this.apiServices.createUser(this.createUserForm!.value).subscribe({
         next: (response: any) => {
           this.messageService.add({
@@ -183,7 +173,7 @@ export class AdminRegisterComponent implements OnInit {
     return value;
   }
   setSelectValue(value: number) {
-    this.createDoctorForm!.controls['categoryId'].setValue(value);
+    this.createUserForm!.controls['categoryId'].setValue(value);
     this.categoryError = '';
     return value;
   }
@@ -195,8 +185,10 @@ export class AdminRegisterComponent implements OnInit {
     this.documentFile = value;
     return value;
   }
-  displayErrors(form: FormGroup) {
-    const errors = this.authService.getFormValidationErrors(form);
+  displayErrors() {
+    const errors = this.authService.getFormValidationErrors(
+      this.createUserForm
+    );
     errors.forEach((e) => {
       if (e.control == 'firstName') {
         if (e.error == 'required') {

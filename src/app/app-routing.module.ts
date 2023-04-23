@@ -32,19 +32,19 @@ const routes: Routes = [
     path: 'admin',
     component: AdminPanelComponent,
     canActivate: [RoleGuard],
-    data: { IsAdmin: true },
+    data: { Role: 'Admin' },
   },
   {
     path: 'admin/categories',
     component: AdminPanelComponent,
     canActivate: [RoleGuard],
-    data: { IsAdmin: true },
+    data: { Role: 'Admin' },
   },
   {
     path: 'admin/register/:registerType',
     component: AdminPanelComponent,
     canActivate: [RoleGuard],
-    data: { IsAdmin: true },
+    data: { Role: 'Admin' },
   },
 ];
 

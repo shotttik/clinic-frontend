@@ -8,12 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile-info.component.css'],
 })
 export class ProfileInfoComponent implements OnInit {
-  user: User | undefined;
+  user!: User;
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
-    this.user = this.getUserData();
-  }
-  getUserData() {
-    return this.authService.decodeToken();
+    this.user = this.authService.getUserData();
   }
 }

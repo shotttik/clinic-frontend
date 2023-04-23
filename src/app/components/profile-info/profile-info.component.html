@@ -6,17 +6,16 @@
     <span>{{ user.FirstName }} {{ user.LastName }}</span>
   </div>
   <div class="userStatus infoText">
-    <span class="mainSpan">მომხმარებელი<br /></span>
-    <!-- <span class="mainSpan">{{ user.status }}<br /></span> -->
-    <!-- <span class="secondSpan" *ngIf="user.status == 'ექიმი'"
-      >{{ user.category }}<br
-    /></span> -->
-    <!-- <span class="secondSpan" *ngIf="user.status == 'ექიმი'">
+    <span class="mainSpan">{{ user.Role }}<br /></span>
+    <span class="secondSpan" *ngIf="user.Role == 'ექიმი'"
+      >{{ user.Category }}<br
+    /></span>
+    <span class="secondSpan" *ngIf="user.Role == 'ექიმი'">
       <app-svg-icon
         *ngFor="let i of [1, 2, 3, 4, 5]"
         name="material-symbols_star-rounded"
       ></app-svg-icon>
-    </span> -->
+    </span>
   </div>
   <div class="userPid infoText">
     <span class="mainSpan">პირადი ნომერი :<br /></span>

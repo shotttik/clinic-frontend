@@ -39,7 +39,6 @@
       (inputValueEvent)="setLastNameValue($event)"
     ></app-input>
     <app-input
-      *ngIf="getRegisterType() != 'doctor'"
       class="password"
       type="password"
       placeholder="( მინიმუმ 8 სიმბოლო : @ 7 , )"
@@ -59,12 +58,15 @@
       #isAdminInput
     ></app-input>
     <app-select
+      class="categorySelect"
       [options]="categories"
       *ngIf="getRegisterType() == 'doctor'"
       (selectValueEvent)="setSelectValue($event)"
       placeholder="აირჩიე კატეგორია"
       [error]="categoryError"
     ></app-select>
+  </div>
+  <div class="regInfoThird" *ngIf="getRegisterType() == 'doctor'">
     <app-file-upload
       class="imageUpload"
       *ngIf="getRegisterType() == 'doctor'"
@@ -74,8 +76,6 @@
       accept="image/*"
       name="image-upload"
     ></app-file-upload>
-  </div>
-  <div class="regInfoThird" *ngIf="getRegisterType() == 'doctor'">
     <app-file-upload
       class="docUpload"
       label="CV"

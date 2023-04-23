@@ -46,6 +46,13 @@ app-input {
 
 .imageUpload {
   display: inline-block;
+}
+
+.categorySelect {
   margin-left: 50px;
-  vertical-align: bottom;
+}
+
+.docUpload {
+  display: inline-block;
+  margin-left: 50px;
 }

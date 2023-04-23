@@ -24,7 +24,7 @@ export class RoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const IsAdmin = route.data['IsAdmin'];
+    const Role = route.data['Role'];
     const token = localStorage.getItem('accessToken');
     if (!token) {
       this.router.navigate(['/register']);
@@ -36,8 +36,8 @@ export class RoleGuard implements CanActivate {
       localStorage.clear();
       return false;
     }
-    if (IsAdmin) {
-      return tokenPayload.IsAdmin == 'True';
+    if (Role) {
+      return tokenPayload.Role == 'Admin';
     }
     return true;
   }

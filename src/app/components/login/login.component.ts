@@ -68,7 +68,10 @@ export class LoginComponent implements AfterViewInit {
         });
         localStorage.setItem('accessToken', suc.token);
         this.dialog.closeAll();
-        this.router.navigate(['/profile']);
+
+        let navgateUrl = 'profile';
+        if (this.authService.IsAdmin()) navgateUrl = 'admin';
+        this.router.navigate([navgateUrl]);
       },
       error: (err) => {
         console.log(err);

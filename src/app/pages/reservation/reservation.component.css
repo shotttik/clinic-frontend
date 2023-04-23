@@ -1,6 +1,7 @@
 app-categories {
   display: inline-block;
   margin: 41px 60px 145px 150px;
+  vertical-align: top;
 }
 .reservation {
   display: inline-block;
@@ -8,7 +9,15 @@ app-categories {
 
 app-doctor-info {
   margin-top: 41px;
+  display: block;
 }
 
 app-calendar {
+  display: block;
+  margin-top: 41px;
+}
+app-calendar::ng-deep .editButton {
+  position: absolute;
+  right: 100px;
+  top: 29px;
 }

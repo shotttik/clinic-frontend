@@ -6,6 +6,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root',
@@ -27,9 +28,21 @@ export class AuthService {
     return dToken;
   }
 
+  getUserData(): User {
+    let user: User;
+    const RoleChoice = new Map<string, string>();
+    RoleChoice.set('Doctor', 'ექიმი');
+    RoleChoice.set('User', 'მომხმარებელი');
+    RoleChoice.set('Admin', 'ადმინისტრატორი');
+
+    user = this.decodeToken();
+    user.Role = RoleChoice.get(user.Role)!;
+    return user;
+  }
+
   IsAdmin() {
     const dToken = this.decodeToken();
-    return dToken.IsAdmin === 'True';
+    return dToken.Role === 'Admin';
   }
   getFormValidationErrors(form: FormGroup) {
     const result: { control: string; error: string; value: any }[] = [];

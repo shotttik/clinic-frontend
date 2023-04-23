@@ -1,0 +1,22 @@
+<span mat-dialog-title class="title">{{ data.title }}</span>
+<mat-dialog-content class="message">{{ data.message }}</mat-dialog-content>
+<app-button
+  class="cancelBtn"
+  value="არა"
+  background="#FF93A6"
+  (click)="onNoClick()"
+  height="31px"
+  width="61px"
+  borderRadius="15px"
+></app-button>
+<app-button
+  class="confirmBtn"
+  value="კი"
+  background="#3ACF99"
+  borderRadius="10px"
+  [mat-dialog-close]="true"
+  height="31px"
+  width="61px"
+  borderRadius="15px"
+  >დიახ
+</app-button>

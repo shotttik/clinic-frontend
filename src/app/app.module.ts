@@ -39,7 +39,8 @@ import { FileUploadComponent } from './elements/file-upload/file-upload.componen
 import { TableModule } from 'primeng/table';
 import { CategoryDetailComponent } from './pages/category-detail/category-detail.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { CustomPromptComponent } from './components/custom-prompt/custom-prompt.component';
+import { CustomPromptComponent } from './components/dialog-popup/custom-prompt/custom-prompt.component';
+import { ConfirmationDialogComponent } from './components/dialog-popup/confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +72,7 @@ import { CustomPromptComponent } from './components/custom-prompt/custom-prompt.
     FileUploadComponent,
     CategoryDetailComponent,
     CustomPromptComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

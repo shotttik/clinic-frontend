@@ -76,6 +76,7 @@ export class AdminRegisterComponent implements OnInit {
     return String(routeParams.get('registerType'));
   }
   registerUser() {
+    console.log(this.createUserForm.value);
     if (this.createUserForm?.invalid) {
       this.displayErrors();
       return;

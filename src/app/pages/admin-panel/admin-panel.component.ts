@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AdminRegisterComponent } from 'src/app/components/admin/admin-register/admin-register.component';
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,6 +9,9 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class AdminPanelComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
+  @ViewChild('adminRegister')
+  adminComp!: AdminRegisterComponent;
+
   isCategoriesPage: boolean = false;
   isAdminPage: boolean = false;
   isRegisterPage: boolean = false;
@@ -26,6 +30,11 @@ export class AdminPanelComponent implements OnInit {
   changePage(url: string) {
     if (url.includes('/admin/register')) {
       this.registerType = url.split('/')[3];
+      if (this.route.snapshot.routeConfig?.path?.includes('admin/register')) {
+        this.adminComp.createUserForm.controls['image'].setValue(null);
+        this.adminComp.createUserForm.controls['document'].setValue(null);
+        this.adminComp.createUserForm.controls['categoryId'].setValue(null);
+      }
     }
     this.router.navigate([url]);
   }

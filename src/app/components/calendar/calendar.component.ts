@@ -26,9 +26,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { VerboseFormattingArg } from '@fullcalendar/core/internal';
 import allLocales from '@fullcalendar/core/locales-all';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { CustomPromptComponent } from '../custom-prompt/custom-prompt.component';
+import { CustomPromptComponent } from '../dialog-popup/custom-prompt/custom-prompt.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import { ConfirmationDialogComponent } from '../dialog-popup/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -165,12 +166,24 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   deleteEvent(eventId: string) {
-    const currentEvents: EventInput[] = this.calendarOptions
-      .events as EventInput[];
-    this.calendarOptions.events = currentEvents.filter(
-      (event) => event.id !== eventId
-    );
-    this.calendarApi!.getEventById(eventId)!.remove();
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: {
+        title: 'წაშლის დასტური',
+        message: 'ნამდვილად გსურთ ჯავშნის წაშლა?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        const currentEvents: EventInput[] = this.calendarOptions
+          .events as EventInput[];
+        this.calendarOptions.events = currentEvents.filter(
+          (event) => event.id !== eventId
+        );
+        this.calendarApi!.getEventById(eventId)!.remove();
+      }
+    });
   }
 
   showCalendarEvents() {

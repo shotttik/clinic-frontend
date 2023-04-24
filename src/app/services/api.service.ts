@@ -4,6 +4,7 @@ import { Form, FormGroup } from '@angular/forms';
 import { ToolsService } from './tools.service';
 import { finalize, tap } from 'rxjs';
 import { Search } from '../interfaces/Search';
+import { Reservation } from '../models/Reservation';
 
 @Injectable({
   providedIn: 'root',
@@ -108,6 +109,23 @@ export class ApiService {
   }
   getDoctor(id: number) {
     let url = this.baseUrl + `/getDoctor/${id}`;
+    return this.http.get(url);
+  }
+  setReservation(data: Reservation) {
+    let url = this.baseUrl + `/setReservation`;
+    const dialogRef = this.toolsService.openWaitDialog();
+    return this.http.post(url, data, this.httpOptions).pipe(
+      finalize(() => {
+        dialogRef.close();
+      })
+    );
+  }
+  getUserReservations(id: number) {
+    let url = this.baseUrl + `/getReservations/User/${id}`;
+    return this.http.get(url);
+  }
+  getDoctorReservations(id: number) {
+    let url = this.baseUrl + `/getReservations/Doctor/${id}`;
     return this.http.get(url);
   }
 }

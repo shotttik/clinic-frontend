@@ -5,6 +5,7 @@ import {
   AfterViewInit,
   ComponentFactoryResolver,
   ViewContainerRef,
+  Input,
 } from '@angular/core';
 import {
   Calendar,
@@ -30,6 +31,10 @@ import { CustomPromptComponent } from '../dialog-popup/custom-prompt/custom-prom
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmationDialogComponent } from '../dialog-popup/confirmation-dialog/confirmation-dialog.component';
+import { Reservation } from 'src/app/models/Reservation';
+import { ApiService } from 'src/app/services/api.service';
+import { MessageService } from 'primeng/api';
+import { User } from 'src/app/interfaces/User';
 
 @Component({
   selector: 'app-calendar',
@@ -41,7 +46,9 @@ export class CalendarComponent implements AfterViewInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent | undefined; // Add this variable
   @ViewChild(CustomPromptComponent)
   confirmPopup!: CustomPromptComponent;
+  @Input() calendarEvents: EventInput[] = [];
 
+  //calendarOptions
   calendarOptions: CalendarOptions;
   calendarApi: Calendar | undefined;
   deleteEvents: boolean = false;
@@ -51,34 +58,18 @@ export class CalendarComponent implements AfterViewInit {
   showPopup: boolean = false;
   popupMessage = '';
 
-  calendarEvents: EventInput[] = [
-    {
-      id: uuidv4(),
-      title: 'Event 1',
-      start: '2023-04-20T09:00:00',
-      end: '2023-04-20T10::00',
-    },
-    {
-      id: uuidv4(),
-      title: 'Event 2',
-      start: '2023-04-20T10:00:00',
-      end: '2023-04-20T11:00:00',
-    },
-    {
-      id: uuidv4(),
-      title: 'Event 3',
-      start: '2023-04-20T11:00:00',
-      end: '2023-04-20T12:00:00',
-    },
-  ];
-
+  reservationData: Reservation = new Reservation();
+  private readonly user: User;
   constructor(
     private toolService: ToolsService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService,
+    private messageService: MessageService
   ) {
+    this.user = this.authService.getUserData();
     this.calendarOptions = {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       initialView: 'timeGridWeek',
@@ -97,8 +88,7 @@ export class CalendarComponent implements AfterViewInit {
       selectOverlap: false,
       //event
       selectAllow: this.handleSelectAllow.bind(this),
-      // dateClick: this.handleDateClick.bind(this),
-      select: this.handleDateClick.bind(this),
+      select: this.handleDateSelect.bind(this),
       events: this.calendarEvents,
       eventOverlap: false,
       eventMinHeight: 70,
@@ -111,33 +101,18 @@ export class CalendarComponent implements AfterViewInit {
       slotMaxTime: '17:00',
       slotMinWidth: 100,
       slotLabelFormat: this.slotTimeFormat.bind(this),
-
-      // eventContent: this.displayEventContent.bind(this),
     };
   }
 
   ngAfterViewInit() {
     this.calendarApi = this.calendarComponent!.getApi();
+    setTimeout(() => {
+      this.calendarApi!.addEventSource(this.calendarEvents);
+      console.log(this.calendarEvents);
+    }, 50);
   }
-  handleDateSelect(selectInfo: DateSelectArg) {
-    console.log(selectInfo);
 
-    const title = prompt('Please enter a new title for your evenat');
-    const calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: uuidv4(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      });
-    }
-  }
-  handleDateClick(arg: DateSelectArg) {
+  handleDateSelect(arg: DateSelectArg) {
     if (
       !this.IsAuthenticated() ||
       arg.start.getDay() === 0 ||
@@ -158,14 +133,16 @@ export class CalendarComponent implements AfterViewInit {
     var end = selectInfo.end;
 
     if (!this.IsAuthenticated()) return false;
-
-    // Check if the selected date range includes weekends
+    let currentPath = this.route.snapshot.routeConfig!.path;
+    if (currentPath == 'profile' && this.user.Role == 'მომხმარებელი')
+      return false;
     if (
       start.getDay() === 6 ||
       start.getDay() === 0 ||
       end.getDay() === 6 ||
       end.getDay() === 0
     ) {
+      // Check if the selected date range includes weekends
       // Disable selection
       return false;
     } else {
@@ -184,6 +161,7 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   deleteEvent(eventId: string) {
+    console.log(eventId);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: {
@@ -222,19 +200,53 @@ export class CalendarComponent implements AfterViewInit {
   }
   onConfirm(title: string) {
     this.showPopup = false;
-    if (title != '') {
-      const newEvent: EventInput = {
-        id: uuidv4(),
-        title,
-        start: this.dateSelectArg.start,
-        end: this.dateSelectArg.end,
-        allDay: this.dateSelectArg.allDay,
-      };
-      this.calendarApi!.addEvent(newEvent);
-      const currentEvents: EventInput[] = this.calendarOptions
-        .events as EventInput[]; // cast the events function as an array of EventInput
-      this.calendarOptions.events = [...currentEvents, newEvent]; // update the events function with the new array of events
+    if (title == '') {
+      return;
     }
+    const newEvent: EventInput = {
+      id: uuidv4(),
+      title: title,
+      start: this.dateSelectArg.start,
+      end: this.dateSelectArg.end,
+      allDay: this.dateSelectArg.allDay,
+    };
+
+    //filling reservation data
+
+    this.reservationData.title = title;
+    this.reservationData.start = this.dateSelectArg.start.toISOString();
+    this.reservationData.end = this.dateSelectArg.end.toISOString();
+    let doctorId = this.getDoctorId();
+    const user = this.authService.getUserData();
+    if (doctorId != 0) {
+      this.reservationData.doctorId = doctorId;
+      this.reservationData.userId = user.Id;
+      console.log(this.reservationData);
+    } else {
+      this.reservationData.doctorId = user.Id; //when doctor is authorized,
+    }
+
+    //sending api request
+    this.apiService.setReservation(this.reservationData).subscribe({
+      next: (response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'წარმატეუბლი!',
+          detail: 'დაიჯავშნა წარმატებით',
+        });
+        this.calendarApi!.addEvent(newEvent);
+        const currentEvents: EventInput[] = this.calendarOptions
+          .events as EventInput[]; // cast the events function as an array of EventInput
+        this.calendarOptions.events = [...currentEvents, newEvent]; // update the events function with the new array of events
+      },
+      error: (err) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'შეცდომა!',
+          detail: err.error,
+        });
+      },
+    });
   }
 
   onCancel() {
@@ -246,5 +258,9 @@ export class CalendarComponent implements AfterViewInit {
   }
   changePage(url: string) {
     this.router.navigate([url]);
+  }
+  getDoctorId(): number {
+    const routeParams = this.route.snapshot.paramMap;
+    return Number(routeParams.get('doctorId'));
   }
 }

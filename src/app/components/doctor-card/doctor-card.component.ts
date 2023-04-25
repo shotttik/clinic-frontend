@@ -14,7 +14,7 @@ import { ToolsService } from 'src/app/services/tools.service';
 })
 export class DoctorCardComponent implements OnInit {
   @Input() doctor: Doctor | any;
-  private readonly user: User;
+  private readonly user: User | undefined;
   constructor(
     private toolService: ToolsService,
     private apiService: ApiService,
@@ -35,7 +35,7 @@ export class DoctorCardComponent implements OnInit {
   }
 
   goDetailPage() {
-    if (this.user.Id == this.doctor.id) {
+    if (this.user?.Id == this.doctor.id) {
       this.messageService.add({
         severity: 'error',
         summary: 'შეცდომა!',

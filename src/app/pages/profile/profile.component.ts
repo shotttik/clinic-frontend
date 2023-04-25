@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   reservations: Reservation[] = [];
   calendarEvents: EventInput[] = [];
   event!: EventInput;
-  private readonly user: User;
+  private readonly user: User | undefined;
   constructor(
     private authService: AuthService,
     private apiService: ApiService
@@ -24,12 +24,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getReservations();
-    console.log(this.user);
   }
 
   getReservations() {
-    if (this.user.Role == 'ექიმი') {
-      this.apiService.getDoctorReservations(this.user.Id).subscribe({
+    if (this.user!.Role == 'ექიმი') {
+      this.apiService.getDoctorReservations(this.user!.Id).subscribe({
         next: (response: any) => {
           this.reservations = response;
 
@@ -40,7 +39,7 @@ export class ProfileComponent implements OnInit {
               start: r.startDate,
               end: r.endDate,
             };
-            if (r.doctorId == this.user.Id) this.event.className = 'myEvent';
+            if (r.doctorId == this.user!.Id) this.event.className = 'myEvent';
             if (r.userId == null) this.event.classNames = 'restDays';
             this.event.className;
             this.calendarEvents.push(this.event);
@@ -51,7 +50,7 @@ export class ProfileComponent implements OnInit {
         },
       });
     } else {
-      this.apiService.getUserReservations(this.user.Id).subscribe({
+      this.apiService.getUserReservations(this.user!.Id).subscribe({
         next: (response: any) => {
           this.reservations = response;
 
@@ -62,7 +61,7 @@ export class ProfileComponent implements OnInit {
               start: r.startDate,
               end: r.endDate,
             };
-            if (r.userId == this.user.Id) this.event.className = 'myEvent';
+            if (r.userId == this.user!.Id) this.event.className = 'myEvent';
             this.event.className;
             this.calendarEvents.push(this.event);
           });

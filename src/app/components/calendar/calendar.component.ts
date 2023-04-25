@@ -60,7 +60,7 @@ export class CalendarComponent implements AfterViewInit {
   popupMessage = '';
 
   reservationData: Reservation = new Reservation();
-  private readonly user: User;
+  private readonly user: User | undefined;
 
   currentPath: string | undefined;
 
@@ -176,7 +176,6 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   deleteEvent(eventId: string) {
-    console.log(eventId);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
       data: {
@@ -187,12 +186,28 @@ export class CalendarComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        const currentEvents: EventInput[] = this.calendarOptions
-          .events as EventInput[];
-        this.calendarOptions.events = currentEvents.filter(
-          (event) => event.id !== eventId
-        );
-        this.calendarApi!.getEventById(eventId)!.remove();
+        this.apiService.deleteReservation(Number(eventId)).subscribe({
+          next: (response) => {
+            const currentEvents: EventInput[] = this.calendarOptions
+              .events as EventInput[];
+            this.calendarOptions.events = currentEvents.filter(
+              (event) => event.id !== eventId
+            );
+            this.calendarApi!.getEventById(eventId)!.remove();
+            this.messageService.add({
+              severity: 'success',
+              summary: 'წარმატეუბლი!',
+              detail: 'წაიშალა წარმატებით',
+            });
+          },
+          error: (err) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'წარმატეუბლი!',
+              detail: err.error,
+            });
+          },
+        });
       }
     });
   }
@@ -229,10 +244,9 @@ export class CalendarComponent implements AfterViewInit {
     this.reservationData.start = this.dateSelectArg.start.toISOString();
     this.reservationData.end = this.dateSelectArg.end.toISOString();
     let doctorId = this.getDoctorId();
-    const user = this.authService.getUserData();
     if (doctorId != 0 && !this.isAdminUser()) {
       this.reservationData.doctorId = doctorId;
-      this.reservationData.userId = user.Id;
+      this.reservationData.userId = this.user!.Id;
       newEvent.className = 'myEvent';
     } else if (doctorId != 0 && this.isAdminUser()) {
       //ადმინს შეუძლია შესვენების დაჯავშნა
@@ -240,7 +254,7 @@ export class CalendarComponent implements AfterViewInit {
       newEvent.classNames = 'restDays';
     } else {
       //დოქტორს მხოლოდ შესვენების დაჯავშნა შეუძ₾ია საკთარ გვერდზე,
-      this.reservationData.doctorId = user.Id;
+      this.reservationData.doctorId = this.user!.Id;
       newEvent.classNames = 'restDays';
     }
 
@@ -282,13 +296,13 @@ export class CalendarComponent implements AfterViewInit {
     return Number(routeParams.get('doctorId'));
   }
   isNormalUser() {
-    return this.user.Role == 'მომხმარებელი' ? true : false;
+    return this.user?.Role == 'მომხმარებელი' ? true : false;
   }
   isDoctorUser() {
-    return this.user.Role == 'ექიმი' ? true : false;
+    return this.user?.Role == 'ექიმი' ? true : false;
   }
   isAdminUser() {
-    return this.user.Role == 'ადმინისტრატორი' ? true : false;
+    return this.user?.Role == 'ადმინისტრატორი' ? true : false;
   }
   isDoctorGetsRestDays() {
     return this.currentPath == 'profile' && this.isDoctorUser();

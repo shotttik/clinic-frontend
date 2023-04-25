@@ -128,4 +128,8 @@ export class ApiService {
     let url = this.baseUrl + `/getReservations/Doctor/${id}`;
     return this.http.get(url);
   }
+  deleteReservation(id: number) {
+    let url = this.baseUrl + `/delReservation/${id}`;
+    return this.http.post(url, {});
+  }
 }

@@ -15,7 +15,7 @@ export class ReservationComponent implements OnInit {
   reservations: Reservation[] = [];
   calendarEvents: EventInput[] = [];
   event!: EventInput;
-  private readonly user: User;
+  private readonly user: User | undefined;
   doctorId: number;
   constructor(
     private authService: AuthService,
@@ -42,7 +42,7 @@ export class ReservationComponent implements OnInit {
             start: r.startDate,
             end: r.endDate,
           };
-          if (r.userId == this.user.Id) this.event.className = 'myEvent';
+          if (r.userId == this.user?.Id) this.event.className = 'myEvent';
           if (r.userId == null) this.event.className = 'restDays';
           this.event.className;
           this.calendarEvents.push(this.event);

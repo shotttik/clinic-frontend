@@ -28,7 +28,7 @@ export class AuthService {
     return dToken;
   }
 
-  getUserData(): User {
+  getUserData(): User | undefined {
     let user: User;
     const RoleChoice = new Map<string, string>();
     RoleChoice.set('Doctor', 'ექიმი');
@@ -36,6 +36,9 @@ export class AuthService {
     RoleChoice.set('Admin', 'ადმინისტრატორი');
 
     user = this.decodeToken();
+    if (!user) {
+      return undefined;
+    }
     user.Role = RoleChoice.get(user.Role)!;
     return user;
   }

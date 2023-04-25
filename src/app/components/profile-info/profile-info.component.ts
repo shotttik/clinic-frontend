@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./profile-info.component.css'],
 })
 export class ProfileInfoComponent implements OnInit {
-  user!: User;
+  user: User | undefined;
   constructor(
     private authService: AuthService,
     private apiService: ApiService

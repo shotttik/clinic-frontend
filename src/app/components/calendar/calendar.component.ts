@@ -56,10 +56,14 @@ export class CalendarComponent implements AfterViewInit {
 
   //popup
   showPopup: boolean = false;
+  popupTitle = '';
   popupMessage = '';
 
   reservationData: Reservation = new Reservation();
   private readonly user: User;
+
+  currentPath: string | undefined;
+
   constructor(
     private toolService: ToolsService,
     private route: ActivatedRoute,
@@ -101,15 +105,17 @@ export class CalendarComponent implements AfterViewInit {
       slotMaxTime: '17:00',
       slotMinWidth: 100,
       slotLabelFormat: this.slotTimeFormat.bind(this),
+      eventColor: '#DAFAEE',
     };
   }
 
   ngAfterViewInit() {
     this.calendarApi = this.calendarComponent!.getApi();
+    this.currentPath = this.route.snapshot.routeConfig!.path;
+
     setTimeout(() => {
-      this.calendarApi!.addEventSource(this.calendarEvents);
-      console.log(this.calendarEvents);
-    }, 50);
+      this.calendarOptions.events = this.calendarEvents;
+    }, 100);
   }
 
   handleDateSelect(arg: DateSelectArg) {
@@ -123,7 +129,14 @@ export class CalendarComponent implements AfterViewInit {
       return;
     }
 
-    this.popupMessage = 'Please enter the title of the event';
+    if (this.isDoctorGetsRestDays() || this.isAdminUser()) {
+      this.popupTitle = 'გსურთ შესვენების აღება?';
+      this.popupMessage = 'მიუთითეთ შეტყობინება თქვენი მომხმარებლებისთვის';
+    } else {
+      this.popupTitle = 'გსურთ ვიზიტის დაჯავშნა?';
+      this.popupMessage = 'მიუთითეთ თქვენი პრობლემა';
+    }
+
     this.showPopup = true;
     this.dateSelectArg = arg;
   }
@@ -131,11 +144,13 @@ export class CalendarComponent implements AfterViewInit {
   handleSelectAllow(selectInfo: DateSpanApi) {
     var start = selectInfo.start;
     var end = selectInfo.end;
-
     if (!this.IsAuthenticated()) return false;
-    let currentPath = this.route.snapshot.routeConfig!.path;
-    if (currentPath == 'profile' && this.user.Role == 'მომხმარებელი')
+
+    //მხოლოდ მომხმარებელს შეუძლია დაჯავშნა დოქტორის გვერდზე და ადმინისტრატორს შეუძლია დოქტორს დაუჯავშნოს შესვენება
+    if (this.currentPath?.includes('doctor') && this.isDoctorUser())
       return false;
+    // მომხმარებელს თავის პროფილზე არ შეუძლია დაჯავშნა
+    if (this.currentPath == 'profile' && this.isNormalUser()) return false;
     if (
       start.getDay() === 6 ||
       start.getDay() === 0 ||
@@ -182,10 +197,6 @@ export class CalendarComponent implements AfterViewInit {
     });
   }
 
-  showCalendarEvents() {
-    console.log(this.calendarApi?.getEvents());
-  }
-
   slotTimeFormat(date: VerboseFormattingArg) {
     const start = date.date.marker.toISOString().split('T')[1].substr(0, 5);
     const end = new Date(date.date.marker.getTime() + 60 * 60 * 1000)
@@ -198,6 +209,8 @@ export class CalendarComponent implements AfterViewInit {
   showDeleteOnEvents() {
     this.deleteEvents = !this.deleteEvents;
   }
+
+  //dateselect accepted
   onConfirm(title: string) {
     this.showPopup = false;
     if (title == '') {
@@ -212,18 +225,23 @@ export class CalendarComponent implements AfterViewInit {
     };
 
     //filling reservation data
-
     this.reservationData.title = title;
     this.reservationData.start = this.dateSelectArg.start.toISOString();
     this.reservationData.end = this.dateSelectArg.end.toISOString();
     let doctorId = this.getDoctorId();
     const user = this.authService.getUserData();
-    if (doctorId != 0) {
+    if (doctorId != 0 && !this.isAdminUser()) {
       this.reservationData.doctorId = doctorId;
       this.reservationData.userId = user.Id;
-      console.log(this.reservationData);
+      newEvent.className = 'myEvent';
+    } else if (doctorId != 0 && this.isAdminUser()) {
+      //ადმინს შეუძლია შესვენების დაჯავშნა
+      this.reservationData.doctorId = doctorId;
+      newEvent.classNames = 'restDays';
     } else {
-      this.reservationData.doctorId = user.Id; //when doctor is authorized,
+      //დოქტორს მხოლოდ შესვენების დაჯავშნა შეუძ₾ია საკთარ გვერდზე,
+      this.reservationData.doctorId = user.Id;
+      newEvent.classNames = 'restDays';
     }
 
     //sending api request
@@ -262,5 +280,17 @@ export class CalendarComponent implements AfterViewInit {
   getDoctorId(): number {
     const routeParams = this.route.snapshot.paramMap;
     return Number(routeParams.get('doctorId'));
+  }
+  isNormalUser() {
+    return this.user.Role == 'მომხმარებელი' ? true : false;
+  }
+  isDoctorUser() {
+    return this.user.Role == 'ექიმი' ? true : false;
+  }
+  isAdminUser() {
+    return this.user.Role == 'ადმინისტრატორი' ? true : false;
+  }
+  isDoctorGetsRestDays() {
+    return this.currentPath == 'profile' && this.isDoctorUser();
   }
 }

@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileComponent implements OnInit {
   reservations: Reservation[] = [];
   calendarEvents: EventInput[] = [];
+  event!: EventInput;
   private readonly user: User;
   constructor(
     private authService: AuthService,
@@ -23,25 +24,53 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getReservations();
+    console.log(this.user);
   }
 
   getReservations() {
-    this.apiService.getUserReservations(this.user.Id).subscribe({
-      next: (response: any) => {
-        this.reservations = response;
-        // getting calendar events data from reservations
-        this.reservations.map((r) => {
-          this.calendarEvents.push({
-            id: r.id.toString(),
-            title: r.title,
-            start: r.startDate,
-            end: r.endDate,
+    if (this.user.Role == 'ექიმი') {
+      this.apiService.getDoctorReservations(this.user.Id).subscribe({
+        next: (response: any) => {
+          this.reservations = response;
+
+          this.reservations.map((r) => {
+            this.event = {
+              id: r.id.toString(),
+              title: r.title,
+              start: r.startDate,
+              end: r.endDate,
+            };
+            if (r.doctorId == this.user.Id) this.event.className = 'myEvent';
+            if (r.userId == null) this.event.classNames = 'restDays';
+            this.event.className;
+            this.calendarEvents.push(this.event);
           });
-        });
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    } else {
+      this.apiService.getUserReservations(this.user.Id).subscribe({
+        next: (response: any) => {
+          this.reservations = response;
+
+          this.reservations.map((r) => {
+            this.event = {
+              id: r.id.toString(),
+              title: r.title,
+              start: r.startDate,
+              end: r.endDate,
+            };
+            if (r.userId == this.user.Id) this.event.className = 'myEvent';
+            this.event.className;
+            this.calendarEvents.push(this.event);
+          });
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
   }
 }

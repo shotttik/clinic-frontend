@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/User';
+import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,8 +10,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProfileInfoComponent implements OnInit {
   user!: User;
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private apiService: ApiService
+  ) {}
   ngOnInit(): void {
     this.user = this.authService.getUserData();
+  }
+
+  getImagePath(imagePath: string) {
+    return this.apiService.generateBackPath(imagePath);
   }
 }

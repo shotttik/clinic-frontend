@@ -12,6 +12,9 @@
   margin-top: 45px;
   margin-left: 104px;
 }
+.profileImage img {
+  border-radius: 50%;
+}
 
 .userFullName {
   margin-top: 10px;

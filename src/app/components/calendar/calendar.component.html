@@ -8,8 +8,24 @@
       <ng-template #eventContent let-arg class="eventTemplate">
         <!-- <b>{{ arg.timeText }}</b> -->
         <!-- <i>{{ arg.event.title }}</i> -->
-        <i> ჩემი ჯავშანი</i>
-        <div class="eventDeleteButtonContainer" *ngIf="deleteEvents">
+        <i *ngIf="arg.event.classNames.includes('myEvent') && isNormalUser()"
+          >ჩემი ჯავშანი</i
+        >
+        <i
+          *ngIf="
+            arg.event.classNames.includes('myEvent') &&
+            !arg.event.classNames.includes('restDays') &&
+            !isNormalUser()
+          "
+          >დაჯავშნილია</i
+        >
+        <div
+          class="eventDeleteButtonContainer"
+          *ngIf="
+            (deleteEvents && arg.event.classNames.includes('myEvent')) ||
+            (deleteEvents && isAdminUser())
+          "
+        >
           <app-svg-icon
             name="redX"
             class="eventDeleteButton"
@@ -22,6 +38,8 @@
     </full-calendar>
   </div>
   <app-custom-prompt
+    [title]="popupTitle"
+    [message]="popupMessage"
     *ngIf="showPopup"
     (confirmEvent)="onConfirm($event)"
     (cancelEvent)="onCancel()"
@@ -35,7 +53,6 @@
     <span class="mainMessageTitle title">დასაჯავშნად გთხოვთ გაიაროთ </span>
     <span class="secondMessageTitle title"> ავტორიზაცია ან რეგისტრაცია.</span>
   </div>
-  <button (click)="showCalendarEvents()">აბა დააძგაფე</button>
   <app-button
     class="editButton"
     [background]="deleteEvents ? '#FF93A6' : '#ECF2F8'"
@@ -47,4 +64,18 @@
     (click)="showDeleteOnEvents()"
     value="რედაქტირება"
   ></app-button>
+  <div class="calendarInfo">
+    <div class="doctorRestDayContainer colorsInfo">
+      <div class="doctorRestDay"></div>
+      <span>დასვენების დღე</span>
+    </div>
+    <div class="otherReservsContainer colorsInfo">
+      <div class="otherReservs"></div>
+      <span>სხვისი ჯავშანი</span>
+    </div>
+    <div class="myReservsContainer colorsInfo">
+      <div class="myReservs"></div>
+      <span>ჩემი ჯავშანი</span>
+    </div>
+  </div>
 </div>

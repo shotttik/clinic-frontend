@@ -1,6 +1,13 @@
 <div class="profileContainer" *ngIf="user">
   <div class="profileImage">
-    <img class="profileimg" src="assets/images/profileImg.png" />
+    <img
+      class="profileimg"
+      [src]="
+        user.Image == ''
+          ? 'assets/images/profileImg.png'
+          : getImagePath(user.Image)
+      "
+    />
   </div>
   <div class="userFullName">
     <span>{{ user.FirstName }} {{ user.LastName }}</span>

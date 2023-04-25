@@ -8,7 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CustomPromptComponent {
   @Output() confirmEvent = new EventEmitter<string>();
   @Output() cancelEvent = new EventEmitter<void>();
-  @Input() message = 'მიუთითეთ თქვენი პრობლემა';
+  @Input() title: string = 'გსურთ ვიზიტის დაჯავშნა?';
+  @Input() message: string = 'მიუთითეთ თქვენი პრობლემა';
   inputText: string = '';
 
   confirm() {

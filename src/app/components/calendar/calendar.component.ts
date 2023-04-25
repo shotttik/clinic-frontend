@@ -31,7 +31,8 @@ import { CustomPromptComponent } from '../dialog-popup/custom-prompt/custom-prom
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmationDialogComponent } from '../dialog-popup/confirmation-dialog/confirmation-dialog.component';
-import { Reservation } from 'src/app/models/Reservation';
+import { ReservationModel } from 'src/app/models/Reservation';
+import { Reservation } from 'src/app/interfaces/Reservation';
 import { ApiService } from 'src/app/services/api.service';
 import { MessageService } from 'primeng/api';
 import { User } from 'src/app/interfaces/User';
@@ -48,6 +49,10 @@ export class CalendarComponent implements AfterViewInit {
   confirmPopup!: CustomPromptComponent;
   @Input() calendarEvents: EventInput[] = [];
 
+  //for event info popup
+  @Input() reservations: Reservation[] = [];
+  eventInfoFullName: string = 'მომხმარებლის სახელი და გვარი';
+  eventInfoDescription: string = 'აქ იქნება აღწერა';
   //calendarOptions
   calendarOptions: CalendarOptions;
   calendarApi: Calendar | undefined;
@@ -58,10 +63,10 @@ export class CalendarComponent implements AfterViewInit {
   showPopup: boolean = false;
   popupTitle = '';
   popupMessage = '';
+  reservationData: ReservationModel = new ReservationModel();
+  showEventInfoPopup: boolean = false;
 
-  reservationData: Reservation = new Reservation();
   private readonly user: User | undefined;
-
   currentPath: string | undefined;
 
   constructor(
@@ -138,6 +143,7 @@ export class CalendarComponent implements AfterViewInit {
     }
 
     this.showPopup = true;
+    this.showEventInfoPopup = false;
     this.dateSelectArg = arg;
   }
 
@@ -283,6 +289,21 @@ export class CalendarComponent implements AfterViewInit {
 
   onCancel() {
     this.showPopup = false;
+  }
+  showEventInfo(id: string) {
+    let currentEvent = this.reservations.find((r) => r.id == Number(id));
+
+    this.eventInfoDescription = currentEvent!.title;
+    if (this.isNormalUser()) {
+      this.eventInfoFullName = currentEvent!.doctorFullName!;
+    } else {
+      this.eventInfoFullName = currentEvent!.userFullName!;
+    }
+    this.showEventInfoPopup = true;
+    this.showPopup = false;
+  }
+  closeEventInfo() {
+    this.showEventInfoPopup = false;
   }
 
   IsAuthenticated() {

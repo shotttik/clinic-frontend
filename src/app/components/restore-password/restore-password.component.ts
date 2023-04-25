@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -17,12 +17,15 @@ import { Output, EventEmitter } from '@angular/core';
   selector: 'app-restore-password',
   templateUrl: './restore-password.component.html',
   styleUrls: ['./restore-password.component.css'],
+  providers: [MessageService],
 })
 export class RestorePasswordComponent implements OnInit {
+  @Input() changePassword: boolean | null = false;
   @Output() restorePasswordEvent = new EventEmitter<boolean>();
   sendCodeForm: FormGroup | undefined;
   restoreForm: FormGroup | undefined;
   restorePassword = false;
+  passwordChanged = false;
 
   emailError = '';
   passwordError = '';
@@ -126,7 +129,12 @@ export class RestorePasswordComponent implements OnInit {
             summary: 'წარმატებული!',
             detail: 'პაროლი წარმატებით შეიცვალა.',
           });
-          this.loadLoginPage();
+          if (this.changePassword) {
+            this.passwordChanged = true;
+          }
+          {
+            this.loadLoginPage();
+          }
         },
         (err) => {
           this.messageService.add({

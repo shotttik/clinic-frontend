@@ -8,4 +8,5 @@ export interface User {
   exp: number;
   Role: string;
   Category: string;
+  MyReservationsCount: number;
 }

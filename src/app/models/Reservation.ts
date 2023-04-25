@@ -1,4 +1,4 @@
-export class Reservation {
+export class ReservationModel {
   title: string = '';
   start: string = '';
   end: string = '';

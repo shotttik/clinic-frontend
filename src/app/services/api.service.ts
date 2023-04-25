@@ -4,7 +4,7 @@ import { Form, FormGroup } from '@angular/forms';
 import { ToolsService } from './tools.service';
 import { finalize, tap } from 'rxjs';
 import { Search } from '../interfaces/Search';
-import { Reservation } from '../models/Reservation';
+import { ReservationModel } from '../models/Reservation';
 
 @Injectable({
   providedIn: 'root',
@@ -111,7 +111,7 @@ export class ApiService {
     let url = this.baseUrl + `/getDoctor/${id}`;
     return this.http.get(url);
   }
-  setReservation(data: Reservation) {
+  setReservation(data: ReservationModel) {
     let url = this.baseUrl + `/setReservation`;
     const dialogRef = this.toolsService.openWaitDialog();
     return this.http.post(url, data, this.httpOptions).pipe(

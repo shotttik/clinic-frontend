@@ -151,6 +151,9 @@ app-custom-prompt {
 .doctorRestDay {
   background: #fff1f4;
 }
+.infoReservs {
+  background: #add8e6;
+}
 
 .otherReservs {
   background: #ff93a6;
@@ -167,11 +170,27 @@ app-custom-prompt {
 
 .colorsInfo span {
   margin-left: 5px;
-  margin-right: 20px;
+  margin-right: 40px;
   font-family: "FiraGO-Regular";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #1f3d53;
+}
+
+.eventInfoHover {
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+}
+.eventInfoPopup span {
+  color: #8d8d8d;
+  font-weight: bolder;
+  font-size: 13px;
+}
+::ng-deep .fc-event-main:hover .eventInfoPopup {
+  display: inline-flex;
 }

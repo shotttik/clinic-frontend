@@ -10,8 +10,8 @@ export class CustomPromptComponent {
   @Output() cancelEvent = new EventEmitter<void>();
   @Input() title: string = 'გსურთ ვიზიტის დაჯავშნა?';
   @Input() message: string = 'მიუთითეთ თქვენი პრობლემა';
-  inputText: string = '';
-
+  @Input() eventInfo: boolean = false;
+  @Input() inputText: string = '';
   confirm() {
     this.confirmEvent.emit(this.inputText);
   }

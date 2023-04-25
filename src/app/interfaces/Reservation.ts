@@ -4,5 +4,7 @@ export interface Reservation {
   startDate: string;
   endDate: string;
   userId: number | null;
+  userFullName: string | null;
   doctorId: number;
+  doctorFullName: string | null;
 }

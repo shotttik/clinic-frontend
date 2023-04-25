@@ -33,12 +33,12 @@
     <span class="secondSpan">{{ user.Email }}</span>
   </div>
   <!-- <div class="changePassword infoText" *ngIf="user.status == 'მომხმარებელი'"> -->
-  <div class="changePassword infoText">
+  <div class="changePassword infoText" (click)="changePassword()">
     <span>პაროლის შეცვლა</span>
   </div>
   <div class="userReservations infoText">
     <span class="mainSpan">ჩემი ჯავშანი :<br /></span>
-    <!-- <span class="secondSpan">({{ user.Reservations }})</span> -->
-    <span class="secondSpan">(3)</span>
+    <span class="secondSpan">({{ user.MyReservationsCount }})</span>
+    <!-- <span class="secondSpan">(3)</span> -->
   </div>
 </div>

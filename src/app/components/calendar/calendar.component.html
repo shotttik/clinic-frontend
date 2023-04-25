@@ -20,6 +20,16 @@
           >დაჯავშნილია</i
         >
         <div
+          class="eventInfoHover"
+          *ngIf="
+            (!deleteEvents &&
+              (arg.event.classNames.includes('myEvent') ||
+                arg.event.classNames.includes('restDays'))) ||
+            (!deleteEvents && isAdminUser())
+          "
+          (click)="showEventInfo(arg.event.id)"
+        ></div>
+        <div
           class="eventDeleteButtonContainer"
           *ngIf="
             (deleteEvents && arg.event.classNames.includes('myEvent')) ||
@@ -37,6 +47,14 @@
       </ng-template>
     </full-calendar>
   </div>
+  <app-custom-prompt
+    title="ჯავშნის აღწერა"
+    [message]="eventInfoFullName"
+    [inputText]="eventInfoDescription"
+    [eventInfo]="true"
+    *ngIf="showEventInfoPopup"
+    (cancelEvent)="closeEventInfo()"
+  ></app-custom-prompt>
   <app-custom-prompt
     [title]="popupTitle"
     [message]="popupMessage"

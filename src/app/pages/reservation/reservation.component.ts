@@ -35,6 +35,7 @@ export class ReservationComponent implements OnInit {
       next: (response: any) => {
         this.reservations = response;
         // getting calendar events data from reservations
+
         this.reservations.map((r) => {
           this.event = {
             id: r.id.toString(),

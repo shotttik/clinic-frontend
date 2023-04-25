@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Doctor } from 'src/app/interfaces/Doctor';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -6,6 +7,7 @@ import { ApiService } from 'src/app/services/api.service';
   selector: 'app-doctors',
   templateUrl: './doctors.component.html',
   styleUrls: ['./doctors.component.css'],
+  providers: [MessageService],
 })
 export class DoctorsComponent implements OnInit {
   doctors: Doctor[] = [];

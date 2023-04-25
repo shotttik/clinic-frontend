@@ -56,3 +56,11 @@
 .changePassword span:hover {
   color: #18a4e1;
 }
+
+::ng-deep app-authorization ::ng-deep .authPassword ::ng-deep app-svg-icon {
+  top: 15px;
+}
+
+::ng-deep app-authorization ::ng-deep .authEmail ::ng-deep app-svg-icon {
+  top: 15px;
+}

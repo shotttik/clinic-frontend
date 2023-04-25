@@ -1,4 +1,9 @@
 <div class="modal">
+  <div class="modal-header" *ngIf="eventInfo">
+    <div class="exitModal" (click)="cancel()">
+      <app-svg-icon name="redX"></app-svg-icon>
+    </div>
+  </div>
   <div class="modal-body">
     <p class="mainTitle title">{{ title }}</p>
     <p class="secondTitle title">{{ message }}</p>
@@ -6,9 +11,10 @@
       type="text"
       [(ngModel)]="inputText"
       placeholder="აღწერა..."
+      [disabled]="eventInfo"
     ></textarea>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" *ngIf="!eventInfo">
     <app-button
       class="btnCancel"
       (click)="cancel()"

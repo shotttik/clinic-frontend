@@ -22,7 +22,7 @@ textarea {
   border: 1px solid #ecf2f8;
   border-radius: 10px;
   margin-top: 15px;
-  overflow: hidden;
+  overflow: auto;
   resize: none;
 }
 
@@ -52,4 +52,16 @@ app-button {
 }
 .btnConfirm {
   margin-left: 10px;
+}
+
+.exitModal {
+  cursor: pointer;
+  display: inline-flex;
+  float: right;
+  margin-top: 20px;
+  padding-right: 37px;
+}
+.exitModal ::ng-deep svg {
+  width: 16px;
+  height: 16px;
 }

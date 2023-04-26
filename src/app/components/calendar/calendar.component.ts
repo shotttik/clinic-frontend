@@ -136,7 +136,11 @@ export class CalendarComponent implements AfterViewInit {
 
     // Calculate the position of the popup
     this.eventInfoY = arg.jsEvent!.clientY - this.popupHeight + 100;
-    this.eventInfoX = arg.jsEvent!.clientX - this.popupWidth - 100;
+    if (this.currentPath == 'profile') {
+      this.eventInfoX = arg.jsEvent!.clientX - this.popupWidth * 2 - 150;
+    } else {
+      this.eventInfoX = arg.jsEvent!.clientX - this.popupWidth - 100;
+    }
     if (
       !this.IsAuthenticated() ||
       arg.start.getDay() === 0 ||
@@ -311,7 +315,11 @@ export class CalendarComponent implements AfterViewInit {
 
     // Calculate the position of the popup
     this.eventInfoY = event.clientY - this.popupHeight + 100;
-    this.eventInfoX = event.clientX - this.popupWidth - 100;
+    if (this.currentPath == 'profile') {
+      this.eventInfoX = event.clientX - this.popupWidth * 2 - 150;
+    } else {
+      this.eventInfoX = event.clientX - this.popupWidth - 100;
+    }
     let currentEvent = this.reservations.find((r) => r.id == Number(id));
 
     this.eventInfoDescription = currentEvent!.title;

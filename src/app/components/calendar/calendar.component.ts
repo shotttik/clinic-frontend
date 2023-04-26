@@ -53,6 +53,8 @@ export class CalendarComponent implements AfterViewInit {
   @Input() reservations: Reservation[] = [];
   eventInfoFullName: string = 'მომხმარებლის სახელი და გვარი';
   eventInfoDescription: string = 'აქ იქნება აღწერა';
+  eventInfoX: number = 0;
+  eventInfoY: number = 0;
   //calendarOptions
   calendarOptions: CalendarOptions;
   calendarApi: Calendar | undefined;
@@ -65,6 +67,8 @@ export class CalendarComponent implements AfterViewInit {
   popupMessage = '';
   reservationData: ReservationModel = new ReservationModel();
   showEventInfoPopup: boolean = false;
+  popupWidth = 420;
+  popupHeight = 263;
 
   private readonly user: User | undefined;
   currentPath: string | undefined;
@@ -124,6 +128,15 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   handleDateSelect(arg: DateSelectArg) {
+    console.log(arg);
+    // Get the viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    // Get the popup dimensions
+
+    // Calculate the position of the popup
+    this.eventInfoY = arg.jsEvent!.clientY - this.popupHeight + 100;
+    this.eventInfoX = arg.jsEvent!.clientX - this.popupWidth - 100;
     if (
       !this.IsAuthenticated() ||
       arg.start.getDay() === 0 ||
@@ -290,16 +303,41 @@ export class CalendarComponent implements AfterViewInit {
   onCancel() {
     this.showPopup = false;
   }
-  showEventInfo(id: string) {
+  showEventInfo(id: string, event: any) {
+    // Get the viewport dimensions
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    // Get the popup dimensions
+
+    // Calculate the position of the popup
+    this.eventInfoY = event.clientY - this.popupHeight + 100;
+    this.eventInfoX = event.clientX - this.popupWidth - 100;
     let currentEvent = this.reservations.find((r) => r.id == Number(id));
 
     this.eventInfoDescription = currentEvent!.title;
-    if (this.isNormalUser()) {
+    if (
+      this.isNormalUser() &&
+      this.user?.Id == currentEvent!.userId &&
+      this.currentPath == 'profile'
+    ) {
       this.eventInfoFullName = currentEvent!.doctorFullName!;
+    } else if (
+      this.isNormalUser() &&
+      this.user?.Id != currentEvent!.userId &&
+      this.currentPath != 'profile'
+    ) {
+      this.eventInfoFullName = currentEvent!.doctorFullName!;
+    } else if (
+      this.isNormalUser() &&
+      this.user?.Id == currentEvent!.userId &&
+      this.currentPath != 'profile'
+    ) {
+      this.eventInfoFullName = '';
     } else {
       this.eventInfoFullName = currentEvent!.userFullName!;
     }
     this.showEventInfoPopup = true;
+
     this.showPopup = false;
   }
   closeEventInfo() {

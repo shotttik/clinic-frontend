@@ -128,8 +128,6 @@
 app-custom-prompt {
   position: absolute;
   z-index: 3;
-  top: 250px;
-  left: 200px;
 }
 
 .doctorRestDayContainer,
@@ -179,7 +177,7 @@ app-custom-prompt {
   color: #1f3d53;
 }
 
-.eventInfoHover {
+.eventInfoClick {
   cursor: pointer;
   position: absolute;
   z-index: 5;

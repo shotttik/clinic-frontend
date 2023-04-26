@@ -20,14 +20,14 @@
           >დაჯავშნილია</i
         >
         <div
-          class="eventInfoHover"
+          class="eventInfoClick"
           *ngIf="
             (!deleteEvents &&
               (arg.event.classNames.includes('myEvent') ||
                 arg.event.classNames.includes('restDays'))) ||
             (!deleteEvents && isAdminUser())
           "
-          (click)="showEventInfo(arg.event.id)"
+          (click)="showEventInfo(arg.event.id, $event)"
         ></div>
         <div
           class="eventDeleteButtonContainer"
@@ -47,20 +47,14 @@
       </ng-template>
     </full-calendar>
   </div>
-  <app-custom-prompt
-    title="ჯავშნის აღწერა"
-    [message]="eventInfoFullName"
-    [inputText]="eventInfoDescription"
-    [eventInfo]="true"
-    *ngIf="showEventInfoPopup"
-    (cancelEvent)="closeEventInfo()"
-  ></app-custom-prompt>
+
   <app-custom-prompt
     [title]="popupTitle"
     [message]="popupMessage"
     *ngIf="showPopup"
     (confirmEvent)="onConfirm($event)"
     (cancelEvent)="onCancel()"
+    [ngStyle]="{ top: eventInfoY + 'px', left: eventInfoX + 'px' }"
   ></app-custom-prompt>
 
   <div
@@ -96,4 +90,13 @@
       <span>ჩემი ჯავშანი</span>
     </div>
   </div>
+  <app-custom-prompt
+    title="ჯავშნის აღწერა"
+    [message]="eventInfoFullName"
+    [inputText]="eventInfoDescription"
+    [eventInfo]="true"
+    [ngStyle]="{ top: eventInfoY + 'px', left: eventInfoX + 'px' }"
+    *ngIf="showEventInfoPopup"
+    (cancelEvent)="closeEventInfo()"
+  ></app-custom-prompt>
 </div>
